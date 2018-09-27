@@ -13,8 +13,6 @@ namespace WebApplicationRandomOrg.Models
 
     {
 
-      
-
         public WebAppDbContext() : base("WebAppDbContext")
         {
         }

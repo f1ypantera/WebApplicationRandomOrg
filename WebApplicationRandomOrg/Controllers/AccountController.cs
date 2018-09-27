@@ -95,10 +95,26 @@ namespace WebApplicationRandomOrg.Controllers
             }
             return RedirectToAction("Index","Home");
          
-
-
         }
 
+        public ActionResult UserView()
+        {
+            return View(db.UserAccounts);
+        }
+
+        [HttpGet]
+        public ActionResult Edit()
+        {
+            
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Edit(UserAccount userAccount)
+        {
+            db.Entry(userAccount).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
         protected override void Dispose(bool disposing)
         {
