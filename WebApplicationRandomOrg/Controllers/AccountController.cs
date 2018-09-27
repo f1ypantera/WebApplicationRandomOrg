@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using WebApplicationRandomOrg.Models;
-
-
+using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 
 namespace WebApplicationRandomOrg.Controllers
 {
@@ -66,6 +66,39 @@ namespace WebApplicationRandomOrg.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public ActionResult MyAccount()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult DeleteUser()
+        {
+           
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult DeleteUser(int AccountId)
+        {
+            if (ModelState.IsValid)
+            {
+                using (WebAppDbContext db = new WebAppDbContext())
+                {
+                    var  deleteUser = db.UserAccounts.Find(AccountId);
+                    db.UserAccounts.Remove(deleteUser);
+                    db.SaveChanges();
+                }
+                
+                
+
+            }
+            return RedirectToAction("Index","Home");
+         
+
+
+        } 
 
     }
+
 }

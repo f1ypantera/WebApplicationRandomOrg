@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Random.org </title>
+    <title>@ViewBag.Title  Random.org </title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
   
@@ -36,17 +36,17 @@
                             <li><a href="#">To be continue</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">About</a></li>
+                    
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (@Session["LoginSuccess"] != null)
                     {
                         var u = Session["LoginSuccess"] as WebApplicationRandomOrg.Models.UserAccount;
-                        <li>  <a href="#">Добро пожаловать @u.UserName</a></li>
+                        <li>  <a href="@Url.Action("DeleteUser","Account")">Добро пожаловать @u.UserName</a></li>
                         <li> @Html.ActionLink("Logout", "Logout", "Account")</li>
 
-                        // <li><a href="@Html.Action("Logout","Account")"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                       
 
                     }
                     else
