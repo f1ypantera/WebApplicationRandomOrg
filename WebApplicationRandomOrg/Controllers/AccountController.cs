@@ -40,6 +40,18 @@ namespace WebApplicationRandomOrg.Controllers
 
         }
 
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(UserAccount userAccount)
+        {
+            
+            return View();
+        }
+
 
     }
 }

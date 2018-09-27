@@ -13,7 +13,8 @@ namespace WebApplicationRandomOrg.Models
         
         public int AccountId { get; set; }
 
-
+        public string UserName { get; set; }
+        
         [Required(ErrorMessage = "Введите свой Имейл")]
         [RegularExpression(@".+\@.+\..+", ErrorMessage = "Введите правильный Имейл")]
         public string Email { get; set; }
