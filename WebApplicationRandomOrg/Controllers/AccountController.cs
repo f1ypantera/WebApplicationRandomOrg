@@ -12,6 +12,7 @@ namespace WebApplicationRandomOrg.Controllers
 {
     public class AccountController : Controller
     {
+        WebAppDbContext db = new WebAppDbContext();
         // GET: Account
         public ActionResult Index()
         {
@@ -74,7 +75,6 @@ namespace WebApplicationRandomOrg.Controllers
         [HttpGet]
         public ActionResult DeleteUser()
         {
-           
             return View();
         }
 
@@ -97,7 +97,14 @@ namespace WebApplicationRandomOrg.Controllers
          
 
 
-        } 
+        }
+
+
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
+        }
 
     }
 
