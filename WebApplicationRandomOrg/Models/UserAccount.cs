@@ -13,6 +13,7 @@ namespace WebApplicationRandomOrg.Models
         
         public int AccountId { get; set; }
 
+        [Required]
         public string UserName { get; set; }
         
         [Required(ErrorMessage = "Введите свой Имейл")]

@@ -1,42 +1,79 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Random.org </title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+  
 </head>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a class="navbar-brand" href="#">Random.org</a>
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Generate Number
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("Myview","My")">Random number(int,double)</a></li>
+                            <li><a href="#">To be continue</a></li>
+                            <li><a href="#">To be continue</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">About</a></li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (@Session["LoginSuccess"] != null)
+                    {
+                        var u = Session["LoginSuccess"] as WebApplicationRandomOrg.Models.UserAccount;
+                        <li>  <a href="#">Добро пожаловать @u.UserName</a></li>
+                        <li> @Html.ActionLink("Logout", "Logout", "Account")</li>
+
+                        // <li><a href="@Html.Action("Logout","Account")"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+
+                    }
+                    else
+                    {
+
+                        <li><a href="@Url.Action("Registration", "Account")"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a href="@Url.Action("Login", "Account")"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    }
                 </ul>
             </div>
         </div>
-    </div>
+    </nav>
+
+   
+
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+        <footer></footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+
 </body>
 </html>
+
+

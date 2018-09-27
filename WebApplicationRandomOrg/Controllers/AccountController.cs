@@ -48,8 +48,22 @@ namespace WebApplicationRandomOrg.Controllers
         [HttpPost]
         public ActionResult Login(UserAccount userAccount)
         {
-            
+            using (WebAppDbContext db = new WebAppDbContext()) {
+                var usr = db.UserAccounts.SingleOrDefault(m => m.UserName == userAccount.UserName && m.Password == userAccount.Password);
+                if (usr != null)
+                {
+                    Session["LoginSuccess"] = userAccount;
+                    return RedirectToAction("Index", "Home");
+                }
+            }
             return View();
+        }
+
+        public ActionResult Logout()
+        {
+            Session["LoginSuccess"] = null;
+
+            return RedirectToAction("Index", "Home");
         }
 
 
