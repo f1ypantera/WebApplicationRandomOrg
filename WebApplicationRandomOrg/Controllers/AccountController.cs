@@ -72,49 +72,49 @@ namespace WebApplicationRandomOrg.Controllers
             return View();
         }
 
-        [HttpGet]
-        public ActionResult DeleteUser()
-        {
-            return View();
-        }
+        //[HttpGet]
+        //public ActionResult DeleteUser()
+        //{
+        //    return View();
+        //}
 
-        [HttpPost]
-        public ActionResult DeleteUser(int AccountId)
-        {
-            if (ModelState.IsValid)
-            {
-                using (WebAppDbContext db = new WebAppDbContext())
-                {
-                    var  deleteUser = db.UserAccounts.Find(AccountId);
-                    db.UserAccounts.Remove(deleteUser);
-                    db.SaveChanges();
-                }
+        //[HttpPost]
+        //public ActionResult DeleteUser(int AccountId)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        using (WebAppDbContext db = new WebAppDbContext())
+        //        {
+        //            var  deleteUser = db.UserAccounts.Find(AccountId);
+        //            db.UserAccounts.Remove(deleteUser);
+        //            db.SaveChanges();
+        //        }
                 
                 
 
-            }
-            return RedirectToAction("Index","Home");
+        //    }
+        //    return RedirectToAction("Index","Home");
          
-        }
+        //}
 
         public ActionResult UserView()
         {
             return View(db.UserAccounts);
         }
 
-        [HttpGet]
-        public ActionResult Edit()
-        {
+        //[HttpGet]
+        //public ActionResult Edit()
+        //{
             
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Edit(UserAccount userAccount)
-        {
-            db.Entry(userAccount).State = EntityState.Modified;
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //    return View();
+        //}
+        //[HttpPost]
+        //public ActionResult Edit(UserAccount userAccount)
+        //{
+        //    db.Entry(userAccount).State = EntityState.Modified;
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {
