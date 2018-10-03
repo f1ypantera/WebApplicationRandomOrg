@@ -45,7 +45,7 @@
                     @if (@Session["LoginSuccess"] != null)
                     {
                         var u = Session["LoginSuccess"] as WebApplicationRandomOrg.Models.UserAccount;
-                        <li>  <a href="@Url.Action("DeleteUser","Account")">Добро пожаловать @u.UserName</a></li>
+                        <li>  <a href="#">Добро пожаловать @u.UserName</a></li>
                         <li> @Html.ActionLink("Logout", "Logout", "Account")</li>
 
                     }

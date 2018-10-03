@@ -24,6 +24,7 @@ namespace WebApplicationRandomOrg.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Registration(UserAccount userAccount)
         {
             if (ModelState.IsValid)
@@ -47,6 +48,7 @@ namespace WebApplicationRandomOrg.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(UserAccount userAccount)
         {
             using (WebAppDbContext db = new WebAppDbContext()) {

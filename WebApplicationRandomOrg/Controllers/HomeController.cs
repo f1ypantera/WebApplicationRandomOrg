@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebApplicationRandomOrg.Models;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace WebApplicationRandomOrg.Controllers
@@ -14,7 +15,9 @@ namespace WebApplicationRandomOrg.Controllers
         WebAppDbContext db = new WebAppDbContext();
         public ActionResult Index()
         {
-            return View();
+            var output = db.UserAccounts.FirstOrDefault();
+
+            return View(output);
         }
       
 

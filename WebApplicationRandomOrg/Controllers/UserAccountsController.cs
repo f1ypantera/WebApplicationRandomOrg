@@ -7,9 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplicationRandomOrg.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebApplicationRandomOrg.Controllers
 {
+   
     public class UserAccountsController : Controller
     {
         private WebAppDbContext db = new WebAppDbContext();
@@ -89,7 +91,7 @@ namespace WebApplicationRandomOrg.Controllers
             return View(userAccount);
         }
 
-        // GET: UserAccounts/Delete/5
+       
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,7 +106,7 @@ namespace WebApplicationRandomOrg.Controllers
             return View(userAccount);
         }
 
-        // POST: UserAccounts/Delete/5
+       
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
