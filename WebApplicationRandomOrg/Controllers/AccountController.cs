@@ -80,6 +80,7 @@ namespace WebApplicationRandomOrg.Controllers
                 if (userAccount != null)
                 {
                     FormsAuthentication.SetAuthCookie(login.UserName, true);
+                    
                     return RedirectToAction("Index", "Home");
                 }
                 else
