@@ -103,17 +103,12 @@ namespace WebApplicationRandomOrg.Controllers
             return View();
         }
         
-        public ActionResult Edit(int? id)
+        public ActionResult Edit()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            UserAccount userAccount = db.UserAccounts.Find(id);
-            if (userAccount == null)
-            {
-                return HttpNotFound();
-            }
+            var username = HttpContext.User.Identity.Name;
+       
+            UserAccount userAccount = db.UserAccounts.FirstOrDefault((a) => a.UserName == username);
+         
             return View(userAccount);
         }
 
@@ -126,7 +121,7 @@ namespace WebApplicationRandomOrg.Controllers
             {
                 db.Entry(userAccount).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
             return View(userAccount);
         }
