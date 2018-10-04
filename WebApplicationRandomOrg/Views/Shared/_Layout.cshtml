@@ -33,7 +33,7 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="@Url.Action("Myview","My")">Random number(int,double)</a></li>
+                            <li><a href="@Url.Action("Index","GenerateNumber")">Random number(int,double)</a></li>
                             <li><a href="#">To be continue</a></li>
                             <li><a href="#">To be continue</a></li>
                         </ul>
@@ -45,7 +45,7 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                       
-                        <li>  <a href="#">Добро пожаловать @User.Identity.Name</a></li>
+                        <li>  <a href="@Url.Action("","")">Добро пожаловать @User.Identity.Name</a></li>
                         <li> @Html.ActionLink("Logout", "Logout", "Account")</li>
 
                     }

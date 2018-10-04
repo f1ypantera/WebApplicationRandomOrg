@@ -154,7 +154,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeAccountController.cs" />
+    <Compile Include="Controllers\GenerateNumberController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserAccountsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -209,10 +209,10 @@
     <Content Include="Views\UserAccounts\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Registration.cshtml" />
+    <Content Include="Views\GenerateNumber\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\HomeAccount\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
