@@ -111,7 +111,6 @@ namespace WebApplicationRandomOrg.Controllers
          
             return View(userAccount);
         }
-
        
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -126,6 +125,25 @@ namespace WebApplicationRandomOrg.Controllers
             return View(userAccount);
         }
 
+        public ActionResult Delete()
+        {
+            var username = HttpContext.User.Identity.Name;
+            UserAccount userAccount = db.UserAccounts.FirstOrDefault((a) => a.UserName == username);
+
+            return View(userAccount);
+        }
+        
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete([Bind(Include = "AccountId,UserName,Email,Password,PasswordConfirm,Name,Surname,Year")] UserAccount userAccount)
+        {
+            var username = HttpContext.User.Identity.Name;
+            userAccount = db.UserAccounts.FirstOrDefault((a) => a.UserName == username);
+            db.UserAccounts.Remove(userAccount);
+            db.SaveChanges();
+            return RedirectToAction("Index","Home");
+        }
 
 
 

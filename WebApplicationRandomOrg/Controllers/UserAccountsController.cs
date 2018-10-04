@@ -38,27 +38,26 @@ namespace WebApplicationRandomOrg.Controllers
         }
 
         // GET: UserAccounts/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
+        public ActionResult Create()
+        {
+            return View();
+        }
 
-        //// POST: UserAccounts/Create
-        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "AccountId,UserName,Email,Password,PasswordConfirm,Name,Surname,Year")] UserAccount userAccount)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.UserAccounts.Add(userAccount);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
+        // POST: UserAccounts/Create
+      
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "AccountId,UserName,Email,Password,PasswordConfirm,Name,Surname,Year")] UserAccount userAccount)
+        {
+            if (ModelState.IsValid)
+            {
+                db.UserAccounts.Add(userAccount);
+                db.SaveChanges();
+                return RedirectToAction("Index","Home");
+            }
 
-        //    return View(userAccount);
-        //}
+            return View(userAccount);
+        }
 
         // GET: UserAccounts/Edit/5
         public ActionResult Edit(int? id)
