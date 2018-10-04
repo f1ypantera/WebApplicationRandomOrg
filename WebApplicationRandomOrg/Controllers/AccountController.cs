@@ -8,6 +8,7 @@ using WebApplicationRandomOrg.Models;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Web.Security;
+using System.Net;
 
 namespace WebApplicationRandomOrg.Controllers
 {
@@ -101,8 +102,41 @@ namespace WebApplicationRandomOrg.Controllers
         {
             return View();
         }
+        
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            UserAccount userAccount = db.UserAccounts.Find(id);
+            if (userAccount == null)
+            {
+                return HttpNotFound();
+            }
+            return View(userAccount);
+        }
 
-     
+       
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "AccountId,UserName,Email,Password,PasswordConfirm,Name,Surname,Year")] UserAccount userAccount)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(userAccount).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(userAccount);
+        }
+
+
+
+
+
+
+
         protected override void Dispose(bool disposing)
         {
             db.Dispose();

@@ -45,7 +45,7 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                       
-                        <li>  <a href="@Url.Action("","")">Добро пожаловать @User.Identity.Name</a></li>
+                        <li>  <a href="@Url.Action("Edit","Account")">Добро пожаловать @User.Identity.Name</a></li>
                         <li> @Html.ActionLink("Logout", "Logout", "Account")</li>
 
                     }
