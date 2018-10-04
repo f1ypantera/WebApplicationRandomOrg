@@ -11,7 +11,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebApplicationRandomOrg.Controllers
 {
-    [Authorize]
+    
     public class UserAccountsController : Controller
     {
         private WebAppDbContext db = new WebAppDbContext();

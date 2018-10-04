@@ -13,22 +13,15 @@ namespace WebApplicationRandomOrg.Controllers
     {
 
         WebAppDbContext db = new WebAppDbContext();
+
+        [Authorize]
         public ActionResult Index()
         {
             
             return View();
         }
 
-        //public string Identity()
-        //{
-        //    string result = "Вы не авторизованы";
-        //    if (User.Identity.IsAuthenticated)
-        //    {
-        //        result = "Ваш логин: " + User.Identity.Name;
-        //    }
-        //    return result;
-        
-        //}
+       
       
 
 

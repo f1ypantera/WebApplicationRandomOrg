@@ -42,10 +42,10 @@
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    @if (@Session["LoginSuccess"] != null)
+                    @if (User.Identity.IsAuthenticated)
                     {
-                        var u = Session["LoginSuccess"] as WebApplicationRandomOrg.Models.UserAccount;
-                        <li>  <a href="#">Добро пожаловать @u.UserName</a></li>
+                      
+                        <li>  <a href="#">Добро пожаловать @User.Identity.Name</a></li>
                         <li> @Html.ActionLink("Logout", "Logout", "Account")</li>
 
                     }
