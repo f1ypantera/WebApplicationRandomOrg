@@ -20,6 +20,8 @@ namespace WebApplicationRandomOrg.Models
         }
         public DbSet<UserAccount> UserAccounts { get; set; }
 
-       
+        public System.Data.Entity.DbSet<WebApplicationRandomOrg.Models.Registration> Registrations { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplicationRandomOrg.Models.Login> Logins { get; set; }
     }
 }

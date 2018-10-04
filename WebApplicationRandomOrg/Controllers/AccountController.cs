@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using WebApplicationRandomOrg.Models;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
+using System.Web.Security;
 
 namespace WebApplicationRandomOrg.Controllers
 {
@@ -25,20 +26,37 @@ namespace WebApplicationRandomOrg.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Registration(UserAccount userAccount)
+        public ActionResult Registration(Registration registration)
         {
             if (ModelState.IsValid)
             {
-                using (WebAppDbContext db = new WebAppDbContext())
+                UserAccount userAccount = null;
+                using(WebAppDbContext db = new WebAppDbContext())
                 {
-                    db.UserAccounts.Add(userAccount);
-                    db.SaveChanges();
+                    userAccount = db.UserAccounts.FirstOrDefault(u => u.UserName == registration.UserName);
                 }
-                ModelState.Clear();
-                ViewBag.message = userAccount.Name + " " + userAccount.Surname + "Успешно зарегестрирован";
+                if(userAccount == null)
+                {
+                    using (WebAppDbContext db = new WebAppDbContext())
+                    {
+                        db.UserAccounts.Add(new UserAccount { UserName = registration.UserName, Email = registration.Email, Password = registration.Password ,PasswordConfirm = registration.PasswordConfirm, Name = registration.Name,Surname = registration.Surname, Year = registration.Year });
+                        db.SaveChanges();
+
+                        userAccount = db.UserAccounts.Where(u => u.UserName == registration.UserName && u.Password == registration.Password).FirstOrDefault();
+                    }
+                    if (userAccount != null)
+                    {
+                        FormsAuthentication.SetAuthCookie(registration.UserName, true);
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Пользователь с таким логином уже существует");
+                }
 
             }
-            return View();
+            return View(registration);
 
         }
 
@@ -49,23 +67,33 @@ namespace WebApplicationRandomOrg.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(UserAccount userAccount)
+        public ActionResult Login(Login login)
         {
-            using (WebAppDbContext db = new WebAppDbContext()) {
-                var usr = db.UserAccounts.SingleOrDefault(m => m.UserName == userAccount.UserName && m.Password == userAccount.Password);
-                if (usr != null)
+            if (ModelState.IsValid)
+            {
+                UserAccount userAccount = null;
+                using (WebAppDbContext db = new WebAppDbContext())
                 {
-                    Session["LoginSuccess"] = userAccount;
+                    userAccount = db.UserAccounts.FirstOrDefault(u => u.UserName == login.UserName && u.Password == login.Password);
+                }
+                if (userAccount != null)
+                {
+                    FormsAuthentication.SetAuthCookie(login.UserName, true);
                     return RedirectToAction("Index", "Home");
                 }
+                else
+                {
+                    ModelState.AddModelError("", "Пользователя с таким логином и паролем нет");
+                }
             }
-            return View();
+           
+            return View(login);
         }
 
         public ActionResult Logout()
         {
             Session["LoginSuccess"] = null;
-
+            FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
 

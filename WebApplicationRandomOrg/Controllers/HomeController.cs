@@ -15,10 +15,20 @@ namespace WebApplicationRandomOrg.Controllers
         WebAppDbContext db = new WebAppDbContext();
         public ActionResult Index()
         {
-            var output = db.UserAccounts.FirstOrDefault();
-
-            return View(output);
+            
+            return View();
         }
+
+        //public string Identity()
+        //{
+        //    string result = "Вы не авторизованы";
+        //    if (User.Identity.IsAuthenticated)
+        //    {
+        //        result = "Ваш логин: " + User.Identity.Name;
+        //    }
+        //    return result;
+        
+        //}
       
 
 

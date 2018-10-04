@@ -159,6 +159,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\Registration.cs" />
     <Compile Include="Models\UserAccount.cs" />
     <Compile Include="Models\WebAppDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -200,12 +202,12 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\Registration.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\UserAccounts\Delete.cshtml" />
     <Content Include="Views\UserAccounts\Details.cshtml" />
     <Content Include="Views\UserAccounts\Edit.cshtml" />
     <Content Include="Views\UserAccounts\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Registration.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

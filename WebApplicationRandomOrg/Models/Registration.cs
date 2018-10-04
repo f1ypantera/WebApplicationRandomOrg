@@ -8,8 +8,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebApplicationRandomOrg.Models
 {
-    public class UserAccount
+    public class Registration
     {
+
+
         [Key]
         [System.Web.Mvc.HiddenInput(DisplayValue = false)]
         public int AccountId { get; set; }
@@ -17,7 +19,7 @@ namespace WebApplicationRandomOrg.Models
         [Required]
         [Display(Name = "Имя пользователя")]
         public string UserName { get; set; }
-        
+
         [Required(ErrorMessage = "Введите свой Имейл")]
         [RegularExpression(@".+\@.+\..+", ErrorMessage = "Введите правильный Имейл")]
         [Display(Name = "Email")]
@@ -32,16 +34,14 @@ namespace WebApplicationRandomOrg.Models
         [Display(Name = "Потвердите пароль")]
         public string PasswordConfirm { get; set; }
 
-      
+        
         [Display(Name = "Имя")]
         public string Name { get; set; }
      
         [Display(Name = "Фамилия")]
         public string Surname { get; set; }
-    
+       
         [Display(Name = "Год Рождения")]
-        
         public int Year { get; set; }
-
     }
 }
