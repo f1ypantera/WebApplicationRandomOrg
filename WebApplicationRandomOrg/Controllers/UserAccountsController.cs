@@ -11,9 +11,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebApplicationRandomOrg.Controllers
 {
-    
+    [Authorize(Users = "Ira")]
     public class UserAccountsController : Controller
     {
+
         private WebAppDbContext db = new WebAppDbContext();
 
         // GET: UserAccounts

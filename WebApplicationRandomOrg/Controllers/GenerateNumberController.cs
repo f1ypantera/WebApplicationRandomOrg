@@ -8,7 +8,7 @@ namespace WebApplicationRandomOrg.Controllers
 {
     public class GenerateNumberController : Controller
     {
-        [Authorize(Roles ="Admin")]
+        [Authorize]
         public ActionResult Index()
         {
             return View();
