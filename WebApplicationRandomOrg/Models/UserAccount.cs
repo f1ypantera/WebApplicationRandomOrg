@@ -5,6 +5,7 @@ using System.Web;
 using WebApplicationRandomOrg.Models;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplicationRandomOrg.Models
 {
@@ -17,7 +18,7 @@ namespace WebApplicationRandomOrg.Models
         [Required]
         [Display(Name = "Имя пользователя")]
         public string UserName { get; set; }
-        
+
         [Required(ErrorMessage = "Введите свой Имейл")]
         [RegularExpression(@".+\@.+\..+", ErrorMessage = "Введите правильный Имейл")]
         [Display(Name = "Email")]
@@ -32,16 +33,32 @@ namespace WebApplicationRandomOrg.Models
         [Display(Name = "Потвердите пароль")]
         public string PasswordConfirm { get; set; }
 
-      
+
         [Display(Name = "Имя")]
         public string Name { get; set; }
-     
+
         [Display(Name = "Фамилия")]
         public string Surname { get; set; }
-    
+
         [Display(Name = "Год Рождения")]
-        
+
         public int Year { get; set; }
+
+        [ForeignKey("Role")]
+        public int RoleID { get; set; }
+        public Role Role { get; set; }
+    }
+
+    public class Role
+    {
+        [Key]
+        [System.Web.Mvc.HiddenInput(DisplayValue = false)]
+        public int RoleID { get; set; }
+
+        public string RoleName { get; set; }
 
     }
 }
+
+
+  

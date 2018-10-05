@@ -40,7 +40,7 @@ namespace WebApplicationRandomOrg.Controllers
                 {
                     using (WebAppDbContext db = new WebAppDbContext())
                     {
-                        db.UserAccounts.Add(new UserAccount { UserName = registration.UserName, Email = registration.Email, Password = registration.Password ,PasswordConfirm = registration.PasswordConfirm, Name = registration.Name,Surname = registration.Surname, Year = registration.Year });
+                        db.UserAccounts.Add(new UserAccount { UserName = registration.UserName, Email = registration.Email, Password = registration.Password, PasswordConfirm = registration.PasswordConfirm, Name = registration.Name, Surname = registration.Surname, Year = registration.Year ,RoleID = 2 });
                         db.SaveChanges();
 
                         userAccount = db.UserAccounts.Where(u => u.UserName == registration.UserName && u.Password == registration.Password).FirstOrDefault();
@@ -115,7 +115,7 @@ namespace WebApplicationRandomOrg.Controllers
        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AccountId,UserName,Email,Password,PasswordConfirm,Name,Surname,Year")] UserAccount userAccount)
+        public ActionResult Edit([Bind(Include = "AccountId,UserName,Email,Password,PasswordConfirm,Name,Surname,Year,RoleID,Role")] UserAccount userAccount)
         {
             if (ModelState.IsValid)
             {
@@ -137,7 +137,7 @@ namespace WebApplicationRandomOrg.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete([Bind(Include = "AccountId,UserName,Email,Password,PasswordConfirm,Name,Surname,Year")] UserAccount userAccount)
+        public ActionResult Delete([Bind(Include = "AccountId,UserName,Email,Password,PasswordConfirm,Name,Surname,Year,RoleID")] UserAccount userAccount)
         {
             var username = HttpContext.User.Identity.Name;
             userAccount = db.UserAccounts.FirstOrDefault((a) => a.UserName == username);

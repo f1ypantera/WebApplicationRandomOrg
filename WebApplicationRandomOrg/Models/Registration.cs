@@ -5,6 +5,7 @@ using System.Web;
 using WebApplicationRandomOrg.Models;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplicationRandomOrg.Models
 {
@@ -34,14 +35,16 @@ namespace WebApplicationRandomOrg.Models
         [Display(Name = "Потвердите пароль")]
         public string PasswordConfirm { get; set; }
 
-        
+
         [Display(Name = "Имя")]
         public string Name { get; set; }
-     
+
         [Display(Name = "Фамилия")]
         public string Surname { get; set; }
-       
+
         [Display(Name = "Год Рождения")]
         public int Year { get; set; }
+
+       
     }
 }
