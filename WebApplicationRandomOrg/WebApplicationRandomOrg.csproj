@@ -156,7 +156,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\GenerateNumberController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\UserAccountsController.cs" />
+    <Compile Include="Controllers\UserAccountssController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -203,16 +203,16 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\UserAccounts\Delete.cshtml" />
-    <Content Include="Views\UserAccounts\Details.cshtml" />
-    <Content Include="Views\UserAccounts\Edit.cshtml" />
-    <Content Include="Views\UserAccounts\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Registration.cshtml" />
     <Content Include="Views\GenerateNumber\Index.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
-    <Content Include="Views\UserAccounts\Create.cshtml" />
     <Content Include="Views\Account\Delete.cshtml" />
+    <Content Include="Views\UserAccountss\Create.cshtml" />
+    <Content Include="Views\UserAccountss\Delete.cshtml" />
+    <Content Include="Views\UserAccountss\Details.cshtml" />
+    <Content Include="Views\UserAccountss\Edit.cshtml" />
+    <Content Include="Views\UserAccountss\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
