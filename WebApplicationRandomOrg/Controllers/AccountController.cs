@@ -112,20 +112,23 @@ namespace WebApplicationRandomOrg.Controllers
          
             return View(userAccount);
         }
+
        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AccountId,UserName,Email,Password,PasswordConfirm,Name,Surname,Year,RoleID")] UserAccount userAccount)
+        public async Task<ActionResult> Edit([Bind(Include = "AccountId,UserName,Email,Password,PasswordConfirm,Name,Surname,Year,RoleID")] UserAccount userAccount)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(userAccount).State = EntityState.Modified;
-                
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index","Home");
             }
+          
             return View(userAccount);
         }
+
 
         public ActionResult Delete()
         {
