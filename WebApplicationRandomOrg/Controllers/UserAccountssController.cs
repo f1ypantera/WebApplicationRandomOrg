@@ -11,6 +11,8 @@ using WebApplicationRandomOrg.Models;
 
 namespace WebApplicationRandomOrg.Controllers
 {
+
+    [Authorize(Roles = "Admin")]
     public class UserAccountssController : Controller
     {
         private WebAppDbContext db = new WebAppDbContext();
