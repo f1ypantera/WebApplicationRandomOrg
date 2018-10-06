@@ -115,11 +115,12 @@ namespace WebApplicationRandomOrg.Controllers
        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AccountId,UserName,Email,Password,PasswordConfirm,Name,Surname,Year,RoleID,Role")] UserAccount userAccount)
+        public ActionResult Edit([Bind(Include = "AccountId,UserName,Email,Password,PasswordConfirm,Name,Surname,Year,RoleID")] UserAccount userAccount)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(userAccount).State = EntityState.Modified;
+                
                 db.SaveChanges();
                 return RedirectToAction("Index","Home");
             }

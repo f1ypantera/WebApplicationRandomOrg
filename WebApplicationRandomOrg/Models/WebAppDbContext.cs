@@ -26,7 +26,7 @@ namespace WebApplicationRandomOrg.Models
         public System.Data.Entity.DbSet<WebApplicationRandomOrg.Models.Login> Logins { get; set; }
     }
 
-    public class UserDbIniziallizer: DropCreateDatabaseAlways<WebAppDbContext>
+    public class UserDbIniziallizer:CreateDatabaseIfNotExists<WebAppDbContext>
     {
         protected override void Seed(WebAppDbContext db)
         {
