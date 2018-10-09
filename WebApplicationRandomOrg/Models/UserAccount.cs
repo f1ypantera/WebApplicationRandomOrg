@@ -6,6 +6,7 @@ using WebApplicationRandomOrg.Models;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 
 namespace WebApplicationRandomOrg.Models
 {
@@ -57,6 +58,32 @@ namespace WebApplicationRandomOrg.Models
 
         public string RoleName { get; set; }
 
+    }
+    public class UserDbIniziallizer : CreateDatabaseIfNotExists<WebAppDbContext>
+    {
+        protected override void Seed(WebAppDbContext db)
+        {
+            Role admin = new Role { RoleName = "Admin" };
+            Role users = new Role { RoleName = "Users" };
+
+            db.Roles.Add(admin);
+            db.Roles.Add(users);
+
+            db.UserAccounts.Add(new UserAccount
+            {
+                AccountId = 1,
+                UserName = "Ira",
+                Email = "Ira@gmail.com",
+                Password = "123456",
+                PasswordConfirm = "123456",
+                Name = "Ира",
+                Surname = "Репникова",
+                Year = 1996,
+                RoleID = 1
+            });
+
+            base.Seed(db);
+        }
     }
 }
 

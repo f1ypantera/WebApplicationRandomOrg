@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Security;
 using WebApplicationRandomOrg.Models;
+using System.Data.Entity;
 
 namespace WebApplicationRandomOrg.Providers
 {
@@ -39,19 +38,17 @@ namespace WebApplicationRandomOrg.Providers
         public override string[] GetRolesForUser(string username)
         {
             string[] roles = new string[] { };
-
             using (WebAppDbContext db = new WebAppDbContext())
             {
-                UserAccount userAccount = db.UserAccounts.FirstOrDefault(u => u.Email == username);
-                if (userAccount != null)
+                // Получаем пользователя
+                UserAccount user = db.UserAccounts.Include(u => u.Role).FirstOrDefault(u => u.Email == username);
+                if (user != null && user.Role != null)
                 {
-                    Role userRole = db.Roles.Find(userAccount.RoleID);
-                    if (userRole != null)
-                        roles = new string[] { userRole.RoleName };
+                    // получаем роль
+                    roles = new string[] { user.Role.RoleName };
                 }
-            }
-
                 return roles;
+            }
         }
 
         public override string[] GetUsersInRole(string roleName)
@@ -61,20 +58,18 @@ namespace WebApplicationRandomOrg.Providers
 
         public override bool IsUserInRole(string username, string roleName)
         {
-            bool outputResult = false;
 
+           
             using (WebAppDbContext db = new WebAppDbContext())
             {
-                UserAccount userAccount = db.UserAccounts.FirstOrDefault(u => u.Email == username);
-                if (userAccount != null)
-                {
-                    Role userRole = db.Roles.Find(userAccount.RoleID);
-                    if (userRole != null && userRole.RoleName == roleName)
-                        outputResult = true;
-                }
+                UserAccount user = db.UserAccounts.Include(u => u.Role).FirstOrDefault(u => u.Email == username);
+                if (user != null && user.Role != null && user.Role.RoleName == roleName)
+                    return true;
+                else
+                    return false;
             }
 
-            return outputResult;
+           
         }
 
         public override void RemoveUsersFromRoles(string[] usernames, string[] roleNames)

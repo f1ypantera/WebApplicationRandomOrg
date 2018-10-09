@@ -8,11 +8,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplicationRandomOrg.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebApplicationRandomOrg.Controllers
 {
 
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     public class UserAccountssController : Controller
     {
         private WebAppDbContext db = new WebAppDbContext();
