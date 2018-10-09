@@ -7,6 +7,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Data.Entity;
 using WebApplicationRandomOrg.Models;
+using static WebApplicationRandomOrg.Models.WebAppDbContext;
 
 namespace WebApplicationRandomOrg
 {
