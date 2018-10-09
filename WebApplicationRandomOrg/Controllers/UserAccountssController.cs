@@ -9,11 +9,12 @@ using System.Web;
 using System.Web.Mvc;
 using WebApplicationRandomOrg.Models;
 using System.ComponentModel.DataAnnotations;
+using WebApplicationRandomOrg.Filters;
 
 namespace WebApplicationRandomOrg.Controllers
 {
 
-    [Authorize]
+    [Authorize(Users ="Ira")]
     public class UserAccountssController : Controller
     {
         private WebAppDbContext db = new WebAppDbContext();
@@ -80,10 +81,7 @@ namespace WebApplicationRandomOrg.Controllers
             ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", userAccount.RoleID);
             return View(userAccount);
         }
-
-        // POST: UserAccountss/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "AccountId,UserName,Email,Password,PasswordConfirm,Name,Surname,Year,RoleID")] UserAccount userAccount)

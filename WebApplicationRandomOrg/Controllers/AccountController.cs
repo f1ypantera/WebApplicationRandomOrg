@@ -109,7 +109,7 @@ namespace WebApplicationRandomOrg.Controllers
             var username = HttpContext.User.Identity.Name;
        
             UserAccount userAccount = db.UserAccounts.FirstOrDefault((a) => a.UserName == username);
-         
+            ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", userAccount.RoleID);
             return View(userAccount);
         }
 
@@ -125,7 +125,8 @@ namespace WebApplicationRandomOrg.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index","Home");
             }
-          
+            ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", userAccount.RoleID);
+
             return View(userAccount);
         }
 

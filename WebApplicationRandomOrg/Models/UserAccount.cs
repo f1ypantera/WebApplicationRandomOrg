@@ -55,7 +55,7 @@ namespace WebApplicationRandomOrg.Models
         [Key]
         [System.Web.Mvc.HiddenInput(DisplayValue = false)]
         public int RoleID { get; set; }
-
+   
         public string RoleName { get; set; }
 
     }
@@ -63,11 +63,9 @@ namespace WebApplicationRandomOrg.Models
     {
         protected override void Seed(WebAppDbContext db)
         {
-            Role admin = new Role { RoleName = "Admin" };
-            Role users = new Role { RoleName = "Users" };
 
-            db.Roles.Add(admin);
-            db.Roles.Add(users);
+            db.Roles.Add(new Role { RoleID = 1, RoleName = "Admin" });
+            db.Roles.Add(new Role { RoleID = 2, RoleName = "Users" });
 
             db.UserAccounts.Add(new UserAccount
             {
@@ -80,6 +78,7 @@ namespace WebApplicationRandomOrg.Models
                 Surname = "Репникова",
                 Year = 1996,
                 RoleID = 1
+             
             });
 
             base.Seed(db);
