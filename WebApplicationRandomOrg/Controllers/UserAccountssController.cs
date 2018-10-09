@@ -14,7 +14,7 @@ using WebApplicationRandomOrg.Filters;
 namespace WebApplicationRandomOrg.Controllers
 {
 
-    [Authorize(Users = "Ira")]
+    [Authorize(Users = "Admin")]
     public class UserAccountssController : Controller
     {
         private WebAppDbContext db = new WebAppDbContext();
