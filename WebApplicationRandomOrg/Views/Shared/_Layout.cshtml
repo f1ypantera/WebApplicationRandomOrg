@@ -27,10 +27,7 @@
                     <li><a href="@Url.Action("Index","Home")">Home</a></li>
 
                   
-                    @if (User.Identity.Name =="Admin")
-                    {
-                    <li><a href="@Url.Action("Index", "UserAccountss")">Страница Админа</a></li>
-                    }
+                  
 
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -39,31 +36,41 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="@Url.Action("Index","GenerateNumber")">Random number(int,double)</a></li>
-                            <li><a href="#">To be continue</a></li>
-                            <li><a href="#">To be continue</a></li>
+                            <li><a href="#">Random Password</a></li>
+                            <li><a href="#">List of random numbers</a></li>
+                            <li><a href="#">List Of Random Passwords</a></li>
+                            <li><a href="#">Random Word</a></li>
+                            <li><a href="#">Random Date</a></li>
+                            <li><a href="#">Random Point On The Map</a></li>
                         </ul>
                     </li>
 
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    @if (User.Identity.IsAuthenticated)
+
+                    @if (User.Identity.IsAuthenticated && User.Identity.Name != "Admin")
                     {
-                      
-                        <li>  <a href="@Url.Action("Edit","Account")">Добро пожаловать @User.Identity.Name</a></li>
+
+                        <li>  <a href="@Url.Action("Edit", "Account")">Добро пожаловать @User.Identity.Name</a></li>
                         <li> @Html.ActionLink("Logout", "Logout", "Account")</li>
 
                     }
-                    else
+                    else if (User.Identity.Name != "Admin")
                     {
 
                         <li><a href="@Url.Action("Registration", "Account")"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                         <li><a href="@Url.Action("Login", "Account")"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     }
+                    else if (User.Identity.Name == "Admin")
+                    {
+                        <li><a href="@Url.Action("Index", "UserAccountss")">Страница Админа</a></li>
+                        <li> @Html.ActionLink("Logout", "Logout", "Account")</li>
+                    }
 
-                   
-                  
-                    
+
+
+
                 </ul>
             </div>
         </div>
