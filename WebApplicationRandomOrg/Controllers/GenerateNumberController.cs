@@ -106,11 +106,24 @@ namespace WebApplicationRandomOrg.Controllers
                 numbers.Add(rnd.Next(min, max));
                 
             }
-            ViewBag.Numbers = numbers;
 
+            string ArrayString = String.Join(",", numbers);
 
+            ViewBag.output = ArrayString;
 
-          
+            var currentUserName = HttpContext.User.Identity.Name;
+            var currentUser = db.UserAccounts.SingleOrDefault((u) => u.UserName == currentUserName);
+
+            var result = new Result()
+            {
+                OutPutResult = ArrayString.ToString(),
+                UserAccount = currentUser,
+                RequestType = db.RequestTypes.SingleOrDefault((t) => t.RequestTypeID == 3)
+            };
+
+            db.Results.Add(result);
+            db.SaveChanges();
+
 
             return View();
         }

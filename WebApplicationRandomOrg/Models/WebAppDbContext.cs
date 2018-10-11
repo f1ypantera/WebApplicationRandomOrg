@@ -50,13 +50,13 @@ namespace WebApplicationRandomOrg.Models
                 db.UserAccounts.Add(new UserAccount
                 {
                     AccountId = 1,
-                    UserName = "Ira",
-                    Email = "Ira@gmail.com",
+                    UserName = "Admin",
+                    Email = "Admin@gmail.com",
                     Password = "123456",
                     PasswordConfirm = "123456",
-                    Name = "Ира",
-                    Surname = "Репникова",
-                    Year = 1996,
+                    Name = "Admin",
+                    Surname = "Admin",
+                    Year = 1992,
                     RoleID = 1
 
                 });

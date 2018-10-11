@@ -1,5 +1,4 @@
 ﻿
-@model List<int>
 
 
 @using (Html.BeginForm("ListRandomNumbers", "GenerateNumber"))
@@ -17,6 +16,7 @@
     <p><input type="submit" value="Generate" class="btn btn-default" /></p>
 
 
+    <p> Result : @ViewBag.output</p>
    
    
 
