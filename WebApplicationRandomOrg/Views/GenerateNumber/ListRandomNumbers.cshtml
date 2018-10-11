@@ -1,0 +1,27 @@
+﻿
+@model List<int>
+
+
+@using (Html.BeginForm("ListRandomNumbers", "GenerateNumber"))
+{
+
+<div class="form-group">
+
+    <p>Введите количество случайных чисел</p>
+    <p><input type="text" name="quntityelements" /></p>
+
+    <p><input type="text" name="min" placeholder="min" /></p>
+    <p><input type="text" name="max" placeholder="max" /></p>
+
+
+    <p><input type="submit" value="Generate" class="btn btn-default" /></p>
+
+
+   
+   
+
+
+
+
+</div>
+}

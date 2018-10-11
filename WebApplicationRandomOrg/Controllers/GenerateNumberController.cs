@@ -1,11 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using WebApplicationRandomOrg.Models;
-using System.ComponentModel.DataAnnotations.Schema;
-using WebApplicationRandomOrg.Services;
 
 namespace WebApplicationRandomOrg.Controllers
 {
@@ -74,6 +72,48 @@ namespace WebApplicationRandomOrg.Controllers
             return View("RandomIntDouble");
         }
 
+
+        [HttpGet]
+        public ActionResult RandomPassword()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult RandomPass()
+        {
+
+            return View("RandomPassword");
+        }
+
+        [HttpGet]
+        public ActionResult ListRandomNumbers()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ListRandomNumbers(int min,int max,int quntityelements)
+        {
+
+            List<int> numbers = new List<int>();
+            Random rnd = new Random();
+
+            for (int i = 0; i<quntityelements; i++)
+            {
+                numbers.Add(rnd.Next(min, max));
+                
+            }
+            ViewBag.Numbers = numbers;
+
+
+
+          
+
+            return View();
+        }
 
 
 
