@@ -1,0 +1,78 @@
+﻿@model WebApplicationRandomOrg.Models.Result
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SomeView</title>
+    <script type="text/javascript">
+
+        function checkb() {
+            document.getElementById('RandomInt').style.display = document.getElementById('radbox1').checked ? 'block' : 'none';
+            document.getElementById('RandomDouble').style.display = document.getElementById('radbox2').checked ? 'block' : 'none';
+        }            
+   </script>
+
+</head>
+<body onload="checkb();">
+
+    <input onclick="checkb();" checked="checked" id="radbox1" name="GenerateNumber" type="radio" />&nbsp; Int</p>
+    <input onclick="checkb();" id="radbox2" name="GenerateNumber" type="radio" />&nbsp; Double</p>
+
+    <div id="RandomInt" style="display:none;">
+    
+
+        @using (Html.BeginForm("RandomInt", "GenerateNumber"))
+        {
+
+            <div class="form-group">
+
+
+                <p><input type="text" name="min" placeholder="min" /></p>
+                <p><input type="text" name="max" placeholder="max" /></p>
+
+
+                <p><input type="submit" value="int" class="btn btn-default" /></p>
+
+
+
+                <p>@ViewBag.output</p>
+
+
+            </div>
+        }
+
+    </div>
+    <div id="RandomDouble" style="display:none;">
+      
+        @using (Html.BeginForm("RadndomDouble", "GenerateNumber"))
+        {
+
+            <div class="form-group">
+
+
+                <p><input type="text" name="min" placeholder="min" /></p>
+                <p><input type="text" name="max" placeholder="max" /></p>
+
+
+
+                <p><input type="submit" value="Double" class="btn btn-default" /></p>
+
+
+                <p>@ViewBag.output</p>
+
+
+            </div>
+        }
+
+
+    </div>
+
+
+
+
+
+
+
+
+</body>
+</html>

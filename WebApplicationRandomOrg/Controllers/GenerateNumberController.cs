@@ -20,12 +20,14 @@ namespace WebApplicationRandomOrg.Controllers
         }
 
         [HttpGet]
-        public ActionResult RandomIntegerr()
+        public ActionResult RandomIntDouble()
         {
             return View();
         }
+
+
         [HttpPost]
-        public ActionResult RandomIntegerr(int min,int max)
+        public ActionResult RandomInt(int min,int max)
         {
             Random rnd = new Random();
             int res = rnd.Next(min, max);
@@ -46,9 +48,35 @@ namespace WebApplicationRandomOrg.Controllers
             db.SaveChanges();
             
 
-            return View();
+            return View("RandomIntDouble");
         }
-       
+
+        [HttpPost]
+        public ActionResult RadndomDouble (double min ,double max)
+        {
+            Random rnd = new Random();
+
+            double res = rnd.NextDouble() * (max + min) - min;
+            ViewBag.output = res;
+
+            var currentUserName = HttpContext.User.Identity.Name;
+            var currentUser = db.UserAccounts.SingleOrDefault((u) => u.UserName == currentUserName);
+
+            var result = new Result()
+            {
+                OutPutResult = res.ToString(),
+                UserAccount = currentUser,
+                RequestType = db.RequestTypes.SingleOrDefault((t) => t.RequestTypeID == 1)
+            };
+
+            db.Results.Add(result);
+            db.SaveChanges();
+            return View("RandomIntDouble");
+        }
+
+
+
+
 
     }
 }

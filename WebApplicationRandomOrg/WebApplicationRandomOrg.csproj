@@ -246,7 +246,7 @@
     <Content Include="Views\UserAccountss\Edit.cshtml" />
     <Content Include="Views\UserAccountss\Index.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
-    <Content Include="Views\GenerateNumber\RandomIntegerr.cshtml" />
+    <Content Include="Views\GenerateNumber\RandomIntDouble.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
