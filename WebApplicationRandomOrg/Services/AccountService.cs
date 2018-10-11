@@ -12,16 +12,12 @@ using System.Net;
 
 namespace WebApplicationRandomOrg.Services
 {
-    public class AccountService
-    {
-        WebAppDbContext db = new WebAppDbContext();
 
-        public UserAccount GetCurrentUser()
-        {
-            var user = HttpContext.Current.User.Identity.Name;
-            var currentUser  = db.UserAccounts.SingleOrDefault((a) => a.UserName == user);
-            return currentUser;
-            
-        }
+   
+    public class AccountService 
+    {
+       
+      
+      
     }
 }

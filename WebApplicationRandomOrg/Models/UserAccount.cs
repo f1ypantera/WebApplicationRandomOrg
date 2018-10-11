@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using WebApplicationRandomOrg.Models;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
+using System.Web.Security;
+using System.Web.Helpers;
+using WebApplicationRandomOrg.Services;
 
 namespace WebApplicationRandomOrg.Models
 {
@@ -18,6 +22,7 @@ namespace WebApplicationRandomOrg.Models
 
         [Required]
         [Display(Name = "Имя пользователя")]
+       
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "Введите свой Имейл")]
@@ -29,7 +34,7 @@ namespace WebApplicationRandomOrg.Models
         [Display(Name = "Пароль")]
         public string Password { get; set; }
         [Required]
-        [Compare("Password", ErrorMessage = "Пароли не совпадают")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "Пароли не совпадают")]
         [DataType(DataType.Password)]
         [Display(Name = "Потвердите пароль")]
         public string PasswordConfirm { get; set; }
@@ -48,6 +53,11 @@ namespace WebApplicationRandomOrg.Models
         [ForeignKey("Role")]
         public int RoleID { get; set; }
         public Role Role { get; set; }
+
+
+     
+
+
     }
 
     public class Role
@@ -55,11 +65,15 @@ namespace WebApplicationRandomOrg.Models
         [Key]
         [System.Web.Mvc.HiddenInput(DisplayValue = false)]
         public int RoleID { get; set; }
-   
+
+        [Display(Name = "Статус")]
         public string RoleName { get; set; }
 
+
     }
-   
+
+  
+
 }
 
 
