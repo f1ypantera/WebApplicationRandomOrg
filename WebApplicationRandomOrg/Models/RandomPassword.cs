@@ -9,12 +9,12 @@ namespace WebApplicationRandomOrg.Models
     public class RandomPassword
     {
         public int Id { get; set; }
+        [Required]
         public bool includeLowerCase { get; set; }
         public bool includeUpperCase { get; set; }
         public bool includeNumber { get; set; }
         public bool includeSpecial { get; set; }
         [Required]
-        
         public int  lengthofPassword { get; set; }
     }
 }
