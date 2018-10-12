@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -12,6 +13,8 @@ namespace WebApplicationRandomOrg.Models
         public bool includeUpperCase { get; set; }
         public bool includeNumber { get; set; }
         public bool includeSpecial { get; set; }
+        [Required]
+        
         public int  lengthofPassword { get; set; }
     }
 }

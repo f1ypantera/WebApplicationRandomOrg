@@ -101,7 +101,7 @@ namespace WebApplicationRandomOrg.Controllers
                 ViewBag.Error = "Пароль должен быть не менее 8 символов";
                 
             }
-
+            
             string characterSet = "";
 
             if (randomPassword.includeLowerCase)
