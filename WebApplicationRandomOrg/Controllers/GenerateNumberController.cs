@@ -73,6 +73,7 @@ namespace WebApplicationRandomOrg.Controllers
         }
 
 
+
         [HttpGet]
         public ActionResult RandomPassword()
         {
@@ -81,11 +82,77 @@ namespace WebApplicationRandomOrg.Controllers
         }
 
         [HttpPost]
-        public ActionResult RandomPass()
+        public ActionResult RandomPassword(bool includeLowerCase, bool includeUpperCase, bool includeNumber,bool includeSpecial, bool includeSpaces,int lengthofPassword)
         {
 
-            return View("RandomPassword");
+            const string LowerCase_Characters = "abcdefghijklmnopqrstuvwxyz";
+            const string UpperCase_Characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const string NumberCase_Characters = "0123456789";
+            const string Special_Characters = @"!#$%&*@\";
+            const string Space_Charecters = " ";
+            const int Password_LENGTH_MIN = 8;
+            const int Password_LENGTH_MAX = 128;
+            const int Maximum_Identical_Chars = 2;
+
+            if (lengthofPassword <Password_LENGTH_MIN ||  lengthofPassword > Password_LENGTH_MAX)
+            {
+                ViewBag.Error = "Пароль должен быть не менее 8 символов";
+                
+            }
+
+            string characterSet = "";
+
+            if (includeLowerCase)
+            {
+                characterSet += LowerCase_Characters;
+            }
+            if (includeUpperCase)
+            {
+                characterSet += UpperCase_Characters;
+
+            }
+            if (includeNumber)
+            {
+                characterSet += NumberCase_Characters;
+
+            }
+            if (includeSpecial)
+            {
+                characterSet += Special_Characters;
+            }
+            if (includeSpaces)
+            {
+                characterSet += Space_Charecters;
+            }
+
+
+            char[] password = new char[lengthofPassword];
+
+            int characterSetLenght = characterSet.Length;
+
+            Random pass = new Random();
+
+            for (int characterPosition  = 0; characterPosition < lengthofPassword; characterPosition++)
+            {
+                password[characterPosition] = characterSet[pass.Next(characterPosition - 1)];
+
+                bool moreThanTwoIdenticalInARow = characterPosition > Maximum_Identical_Chars && password[characterPosition] ==
+                    password[characterPosition - 1] && password[characterPosition - 1] == password[characterPosition - 2];
+                if (moreThanTwoIdenticalInARow)
+                {
+                    characterPosition--;
+                }
+
+            }
+
+
+
+            return View();
         }
+
+
+
+
 
         [HttpGet]
         public ActionResult ListRandomNumbers()

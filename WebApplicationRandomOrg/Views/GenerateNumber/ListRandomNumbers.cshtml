@@ -1,27 +1,32 @@
-﻿
+﻿<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title></title>
+</head>
+<body>
 
 
-@using (Html.BeginForm("ListRandomNumbers", "GenerateNumber"))
-{
+    @using (Html.BeginForm("ListRandomNumbers", "GenerateNumber"))
+    {
 
-<div class="form-group">
+        <div class="form-group">
 
-    <p>Введите количество случайных чисел</p>
-    <p><input type="text" name="quntityelements" /></p>
+            <p>Введите количество случайных чисел</p>
+            <p><input type="text" name="quntityelements" /></p>
 
-    <p><input type="text" name="min" placeholder="min" /></p>
-    <p><input type="text" name="max" placeholder="max" /></p>
-
-
-    <p><input type="submit" value="Generate" class="btn btn-default" /></p>
+            <p><input type="text" name="min" placeholder="min" /></p>
+            <p><input type="text" name="max" placeholder="max" /></p>
 
 
-    <p> Result : @ViewBag.output</p>
-   
-   
+            <p><input type="submit" value="Generate" class="btn btn-default" /></p>
+
+
+            <p> Result : @ViewBag.output</p>
 
 
 
+        </div>
+    }
 
-</div>
-}
+    </body>
+</html>
