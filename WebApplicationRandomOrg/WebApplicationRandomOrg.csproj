@@ -189,6 +189,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GlobalStatisctic.cs" />
     <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\RandomPassword.cs" />
     <Compile Include="Models\Registration.cs" />
     <Compile Include="Models\RequestType.cs" />
     <Compile Include="Models\Result.cs" />
@@ -197,7 +198,6 @@
     <Compile Include="Models\WebAppDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\CustomRoleProvider.cs" />
-    <Compile Include="Services\AccountService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -247,7 +247,6 @@
     <Content Include="Views\UserAccountss\Index.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
     <Content Include="Views\GenerateNumber\RandomIntDouble.cshtml" />
-    <Content Include="Views\GenerateNumber\RandomPassword.cshtml" />
     <Content Include="Views\GenerateNumber\ListRandomNumbers.cshtml" />
   </ItemGroup>
   <ItemGroup>

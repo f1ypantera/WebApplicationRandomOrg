@@ -82,19 +82,20 @@ namespace WebApplicationRandomOrg.Controllers
         }
 
         [HttpPost]
-        public ActionResult RandomPassword(bool includeLowerCase, bool includeUpperCase, bool includeNumber,bool includeSpecial,int lengthofPassword)
+        public ActionResult RandomPassword(RandomPassword randomPassword)
         {
 
             const string LowerCase_Characters = "abcdefghijklmnopqrstuvwxyz";
             const string UpperCase_Characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             const string NumberCase_Characters = "0123456789";
-            const string Special_Characters = @"!#$%&*@\";           
+            const string Special_Characters = @"!#$%&*@\";  
+            
             const int Password_LENGTH_MIN = 8;
             const int Password_LENGTH_MAX = 128;
             const int Maximum_Identical_Chars = 2;
             
 
-            if (lengthofPassword <Password_LENGTH_MIN ||  lengthofPassword > Password_LENGTH_MAX)
+            if (randomPassword.lengthofPassword <Password_LENGTH_MIN || randomPassword.lengthofPassword > Password_LENGTH_MAX)
             {
                 ViewBag.Error = "Пароль должен быть не менее 8 символов";
                 
@@ -102,34 +103,35 @@ namespace WebApplicationRandomOrg.Controllers
 
             string characterSet = "";
 
-            if (includeLowerCase)
+            if (randomPassword.includeLowerCase)
             {
                 characterSet += LowerCase_Characters;
             }
-            if (includeUpperCase)
+            if (randomPassword.includeUpperCase)
             {
                 characterSet += UpperCase_Characters;
 
             }
-            if (includeNumber)
+         
+            if (randomPassword.includeSpecial)
+            {
+                characterSet += Special_Characters;
+            }
+            if (randomPassword.includeNumber)
             {
                 characterSet += NumberCase_Characters;
 
             }
-            if (includeSpecial)
-            {
-                characterSet += Special_Characters;
-            }
-           
 
 
-            char[] password = new char[lengthofPassword];
+
+            char[] password = new char[randomPassword.lengthofPassword];
 
             int characterSetLenght = characterSet.Length;
 
             Random pass = new Random();
 
-            for (int characterPosition  = 0; characterPosition < lengthofPassword; characterPosition++)
+            for (int characterPosition  = 0; characterPosition < randomPassword.lengthofPassword; characterPosition++)
             {
                 password[characterPosition] = characterSet[pass.Next(characterPosition - 1)];
 
