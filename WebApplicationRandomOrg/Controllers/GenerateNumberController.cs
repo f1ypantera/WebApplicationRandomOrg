@@ -82,17 +82,17 @@ namespace WebApplicationRandomOrg.Controllers
         }
 
         [HttpPost]
-        public ActionResult RandomPassword(bool includeLowerCase, bool includeUpperCase, bool includeNumber,bool includeSpecial, bool includeSpaces,int lengthofPassword)
+        public ActionResult RandomPassword(bool includeLowerCase, bool includeUpperCase, bool includeNumber,bool includeSpecial,int lengthofPassword)
         {
 
             const string LowerCase_Characters = "abcdefghijklmnopqrstuvwxyz";
             const string UpperCase_Characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             const string NumberCase_Characters = "0123456789";
-            const string Special_Characters = @"!#$%&*@\";
-            const string Space_Charecters = " ";
+            const string Special_Characters = @"!#$%&*@\";           
             const int Password_LENGTH_MIN = 8;
             const int Password_LENGTH_MAX = 128;
             const int Maximum_Identical_Chars = 2;
+            
 
             if (lengthofPassword <Password_LENGTH_MIN ||  lengthofPassword > Password_LENGTH_MAX)
             {
@@ -120,10 +120,7 @@ namespace WebApplicationRandomOrg.Controllers
             {
                 characterSet += Special_Characters;
             }
-            if (includeSpaces)
-            {
-                characterSet += Space_Charecters;
-            }
+           
 
 
             char[] password = new char[lengthofPassword];
@@ -145,7 +142,9 @@ namespace WebApplicationRandomOrg.Controllers
 
             }
 
+            string ArrayPassword = String.Join(null, password);
 
+            ViewBag.outputPass = ArrayPassword;
 
             return View();
         }
@@ -195,6 +194,12 @@ namespace WebApplicationRandomOrg.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult SelectRandomWords()
+        {
+
+            return View();
+        }
 
 
 

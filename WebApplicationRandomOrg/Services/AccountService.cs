@@ -16,7 +16,11 @@ namespace WebApplicationRandomOrg.Services
    
     public class AccountService 
     {
-       
+       protected DateTime CurrentTime()
+        {
+
+            return DateTime.Today;
+        }
       
       
     }
