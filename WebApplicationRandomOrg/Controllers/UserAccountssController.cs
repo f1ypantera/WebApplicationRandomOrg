@@ -19,14 +19,13 @@ namespace WebApplicationRandomOrg.Controllers
     {
         private WebAppDbContext db = new WebAppDbContext();
 
-        // GET: UserAccountss
         public async Task<ActionResult> Index()
         {
             var userAccounts = db.UserAccounts.Include(u => u.Role);
             return View(await userAccounts.ToListAsync());
         }
 
-        // GET: UserAccountss/Details/5
+      
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
@@ -41,16 +40,14 @@ namespace WebApplicationRandomOrg.Controllers
             return View(userAccount);
         }
 
-        // GET: UserAccountss/Create
+      
         public ActionResult Create()
         {
             ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName");
             return View();
         }
 
-        // POST: UserAccountss/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+      
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "AccountId,UserName,Email,Password,PasswordConfirm,Name,Surname,Year,RoleID")] UserAccount userAccount)
@@ -66,7 +63,7 @@ namespace WebApplicationRandomOrg.Controllers
             return View(userAccount);
         }
 
-        // GET: UserAccountss/Edit/5
+ 
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
@@ -96,7 +93,6 @@ namespace WebApplicationRandomOrg.Controllers
             return View(userAccount);
         }
 
-        // GET: UserAccountss/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
@@ -111,7 +107,7 @@ namespace WebApplicationRandomOrg.Controllers
             return View(userAccount);
         }
 
-        // POST: UserAccountss/Delete/5
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
