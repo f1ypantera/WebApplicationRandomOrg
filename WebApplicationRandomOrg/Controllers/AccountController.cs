@@ -27,23 +27,23 @@ namespace WebApplicationRandomOrg.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Registration(Registration registration)
+        public async Task<ActionResult> Registration(Registration registration)
         {
             if (ModelState.IsValid)
             {
                 UserAccount userAccount = null;
                 using(WebAppDbContext db = new WebAppDbContext())
                 {
-                    userAccount = db.UserAccounts.FirstOrDefault(u => u.UserName == registration.UserName);
+                     userAccount =  await db.UserAccounts.FirstOrDefaultAsync(u => u.UserName == registration.UserName);
                 }
                 if(userAccount == null)
                 {
                     using (WebAppDbContext db = new WebAppDbContext())
                     {
                         db.UserAccounts.Add(new UserAccount { UserName = registration.UserName, Email = registration.Email, Password = registration.Password, PasswordConfirm = registration.PasswordConfirm, Name = registration.Name, Surname = registration.Surname, Year = registration.Year ,RoleID = 2 });
-                        db.SaveChanges();
+                        await db.SaveChangesAsync();
 
-                        userAccount = db.UserAccounts.Where(u => u.UserName == registration.UserName && u.Password == registration.Password).FirstOrDefault();
+                        userAccount = await db.UserAccounts.Where(u => u.UserName == registration.UserName && u.Password == registration.Password).FirstOrDefaultAsync();
                     }
                     if (userAccount != null)
                     {
@@ -68,14 +68,14 @@ namespace WebApplicationRandomOrg.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(Login login)
+        public async Task<ActionResult> Login(Login login)
         {
             if (ModelState.IsValid)
             {
                 UserAccount userAccount = null;
                 using (WebAppDbContext db = new WebAppDbContext())
                 {
-                    userAccount = db.UserAccounts.FirstOrDefault(u => u.UserName == login.UserName && u.Password == login.Password);
+                    userAccount =  await db.UserAccounts.FirstOrDefaultAsync(u => u.UserName == login.UserName && u.Password == login.Password);
                 }
                 if (userAccount != null)
                 {
@@ -104,11 +104,11 @@ namespace WebApplicationRandomOrg.Controllers
             return View();
         }
         
-        public ActionResult Edit()
+        public async Task<ActionResult> Edit()
         {
             var username = HttpContext.User.Identity.Name;
        
-            UserAccount userAccount = db.UserAccounts.FirstOrDefault((a) => a.UserName == username);
+            UserAccount userAccount =  await db.UserAccounts.FirstOrDefaultAsync((a) => a.UserName == username);
             ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", userAccount.RoleID);
             return View(userAccount);
         }
@@ -121,6 +121,7 @@ namespace WebApplicationRandomOrg.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 db.Entry(userAccount).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index","Home");
@@ -131,10 +132,10 @@ namespace WebApplicationRandomOrg.Controllers
         }
 
 
-        public ActionResult Delete()
+        public async Task<ActionResult> Delete()
         {
             var username = HttpContext.User.Identity.Name;
-            UserAccount userAccount = db.UserAccounts.FirstOrDefault((a) => a.UserName == username);
+            UserAccount userAccount =  await db.UserAccounts.FirstOrDefaultAsync((a) => a.UserName == username);
 
             return View(userAccount);
         }
@@ -142,12 +143,12 @@ namespace WebApplicationRandomOrg.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete([Bind(Include = "AccountId,UserName,Email,Password,PasswordConfirm,Name,Surname,Year,RoleID")] UserAccount userAccount)
+        public async Task<ActionResult> Delete([Bind(Include = "AccountId,UserName,Email,Password,PasswordConfirm,Name,Surname,Year,RoleID")] UserAccount userAccount)
         {
             var username = HttpContext.User.Identity.Name;
-            userAccount = db.UserAccounts.FirstOrDefault((a) => a.UserName == username);
+            userAccount = await db.UserAccounts.FirstOrDefaultAsync((a) => a.UserName == username);
             db.UserAccounts.Remove(userAccount);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             return RedirectToAction("Index","Home");
         }
 

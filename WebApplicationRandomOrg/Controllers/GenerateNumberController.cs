@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using WebApplicationRandomOrg.Models;
+using System.Threading.Tasks;
+using System.Net;
+using System.Web;
+using System.Data.Entity;
 
 namespace WebApplicationRandomOrg.Controllers
 {
@@ -12,10 +16,13 @@ namespace WebApplicationRandomOrg.Controllers
     {
         WebAppDbContext db = new WebAppDbContext();
         
+      
+
         public ActionResult Index()
         {
             return View();
         }
+
 
         [HttpGet]
         public ActionResult RandomIntDouble()
@@ -25,7 +32,7 @@ namespace WebApplicationRandomOrg.Controllers
 
 
         [HttpPost]
-        public ActionResult RandomInt(int min,int max)
+        public async Task<ActionResult> RandomInt(int min,int max)
         {
             Random rnd = new Random();
             int res = rnd.Next(min, max);
@@ -33,24 +40,24 @@ namespace WebApplicationRandomOrg.Controllers
             
         
            var currentUserName = HttpContext.User.Identity.Name;
-           var currentUser = db.UserAccounts.SingleOrDefault((u) => u.UserName == currentUserName);
+           var currentUser = await db.UserAccounts.SingleOrDefaultAsync((u) => u.UserName == currentUserName);
 
             var result = new Result()
             {
                 OutPutResult = res.ToString(),
                 UserAccount = currentUser,
-                RequestType = db.RequestTypes.SingleOrDefault((t) => t.RequestTypeID == 1)
+                RequestType = await db.RequestTypes.SingleOrDefaultAsync((t) => t.RequestTypeID == 1)
             };
 
             db.Results.Add(result);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             
 
             return View("RandomIntDouble");
         }
 
         [HttpPost]
-        public ActionResult RadndomDouble (double min ,double max)
+        public async Task<ActionResult> RadndomDouble (double min ,double max)
         {
             Random rnd = new Random();
 
@@ -58,17 +65,17 @@ namespace WebApplicationRandomOrg.Controllers
             ViewBag.output = res;
 
             var currentUserName = HttpContext.User.Identity.Name;
-            var currentUser = db.UserAccounts.SingleOrDefault((u) => u.UserName == currentUserName);
+            var currentUser = await db.UserAccounts.SingleOrDefaultAsync((u) => u.UserName == currentUserName);
 
             var result = new Result()
             {
                 OutPutResult = res.ToString(),
                 UserAccount = currentUser,
-                RequestType = db.RequestTypes.SingleOrDefault((t) => t.RequestTypeID == 1)
+                RequestType = await db.RequestTypes.SingleOrDefaultAsync((t) => t.RequestTypeID == 1)
             };
 
             db.Results.Add(result);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             return View("RandomIntDouble");
         }
 
@@ -84,7 +91,7 @@ namespace WebApplicationRandomOrg.Controllers
 
 
         [HttpPost]
-        public ActionResult RandomPassword(RandomPassword randomPassword)
+        public async Task<ActionResult> RandomPassword(RandomPassword randomPassword)
         {
 
             const string LowerCase_Characters = "abcdefghijklmnopqrstuvwxyz";
@@ -149,18 +156,18 @@ namespace WebApplicationRandomOrg.Controllers
                 ViewBag.outputPass = ArrayPassword;
 
                 var currentUserName = HttpContext.User.Identity.Name;
-                var currentUser = db.UserAccounts.SingleOrDefault((u) => u.UserName == currentUserName);
+                var currentUser = await db.UserAccounts.SingleOrDefaultAsync((u) => u.UserName == currentUserName);
 
                 var result = new Result()
                 {
                     OutPutResult = ArrayPassword.ToString(),
                     UserAccount = currentUser,
-                    RequestType = db.RequestTypes.SingleOrDefault((t) => t.RequestTypeID == 2)
+                    RequestType = await db.RequestTypes.SingleOrDefaultAsync((t) => t.RequestTypeID == 2)
                 };
 
 
                 db.Results.Add(result);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
 
             }
             else
@@ -182,7 +189,7 @@ namespace WebApplicationRandomOrg.Controllers
 
 
         [HttpPost]
-        public ActionResult ListRandomPassword(RandomPassword randomPassword,int quantityofrandomPass)
+        public async Task<ActionResult> ListRandomPassword(RandomPassword randomPassword,int quantityofrandomPass)
         {
 
             const string LowerCase_Characters = "abcdefghijklmnopqrstuvwxyz";
@@ -255,18 +262,18 @@ namespace WebApplicationRandomOrg.Controllers
                 ViewBag.outputListPass = ListofRandom;
 
                 var currentUserName = HttpContext.User.Identity.Name;
-                var currentUser = db.UserAccounts.SingleOrDefault((u) => u.UserName == currentUserName);
+                var currentUser = await db.UserAccounts.SingleOrDefaultAsync((u) => u.UserName == currentUserName);
 
                 var result = new Result()
                 {
                     OutPutResult = ListofRandom.ToString(),
                     UserAccount = currentUser,
-                    RequestType = db.RequestTypes.SingleOrDefault((t) => t.RequestTypeID == 2)
+                    RequestType = await db.RequestTypes.SingleOrDefaultAsync((t) => t.RequestTypeID == 2)
                 };
 
 
                 db.Results.Add(result);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
 
             }
             else
@@ -286,7 +293,7 @@ namespace WebApplicationRandomOrg.Controllers
         }
 
         [HttpPost]
-        public ActionResult ListRandomNumbers(int min,int max,int quntityelements)
+        public async Task<ActionResult> ListRandomNumbers(int min,int max,int quntityelements)
         {
 
             List<int> numbers = new List<int>();
@@ -303,17 +310,17 @@ namespace WebApplicationRandomOrg.Controllers
             ViewBag.output = ArrayString;
 
             var currentUserName = HttpContext.User.Identity.Name;
-            var currentUser = db.UserAccounts.SingleOrDefault((u) => u.UserName == currentUserName);
+            var currentUser = await db.UserAccounts.SingleOrDefaultAsync((u) => u.UserName == currentUserName);
 
             var result = new Result()
             {
                 OutPutResult = ArrayString.ToString(),
                 UserAccount = currentUser,
-                RequestType = db.RequestTypes.SingleOrDefault((t) => t.RequestTypeID == 3)
+                RequestType = await db.RequestTypes.SingleOrDefaultAsync((t) => t.RequestTypeID == 3)
             };
 
             db.Results.Add(result);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
 
             return View();
