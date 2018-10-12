@@ -33,7 +33,7 @@ namespace WebApplicationRandomOrg.Models
 
         public class UserDbIniziallizer : CreateDatabaseIfNotExists<WebAppDbContext>
         {
-            protected override void Seed(WebAppDbContext db)
+            protected override  void Seed(WebAppDbContext db)
             {
 
                 db.Roles.Add(new Role { RoleID = 1, RoleName = "Admin" });
@@ -56,10 +56,11 @@ namespace WebApplicationRandomOrg.Models
                     PasswordConfirm = "123456",
                     Name = "Admin",
                     Surname = "Admin",
-                    Year = 1992,
+                    Year = 1994,
                     RoleID = 1
 
                 });
+              
 
                 base.Seed(db);
             }

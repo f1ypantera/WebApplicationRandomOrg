@@ -170,23 +170,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201810091222132_InitialCreate.cs" />
-    <Compile Include="Migrations\201810091222132_InitialCreate.Designer.cs">
-      <DependentUpon>201810091222132_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810091256042_NewMigration.cs" />
-    <Compile Include="Migrations\201810091256042_NewMigration.Designer.cs">
-      <DependentUpon>201810091256042_NewMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810091325382_UpdataDb.cs" />
-    <Compile Include="Migrations\201810091325382_UpdataDb.Designer.cs">
-      <DependentUpon>201810091325382_UpdataDb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810091331091_UpdataDbb.cs" />
-    <Compile Include="Migrations\201810091331091_UpdataDbb.Designer.cs">
-      <DependentUpon>201810091331091_UpdataDbb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GlobalStatisctic.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\RandomPassword.cs" />
@@ -265,20 +248,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201810091222132_InitialCreate.resx">
-      <DependentUpon>201810091222132_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810091256042_NewMigration.resx">
-      <DependentUpon>201810091256042_NewMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810091325382_UpdataDb.resx">
-      <DependentUpon>201810091325382_UpdataDb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810091331091_UpdataDbb.resx">
-      <DependentUpon>201810091331091_UpdataDbb.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
