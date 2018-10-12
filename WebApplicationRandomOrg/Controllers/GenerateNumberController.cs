@@ -81,6 +81,8 @@ namespace WebApplicationRandomOrg.Controllers
             return View();
         }
 
+
+
         [HttpPost]
         public ActionResult RandomPassword(RandomPassword randomPassword)
         {
@@ -88,8 +90,7 @@ namespace WebApplicationRandomOrg.Controllers
             const string LowerCase_Characters = "abcdefghijklmnopqrstuvwxyz";
             const string UpperCase_Characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             const string NumberCase_Characters = "0123456789";
-            const string Special_Characters = @"!#$%&*@\";  
-            
+            const string Special_Characters = @"!#$%&*@\";           
             const int Password_LENGTH_MIN = 8;
             const int Password_LENGTH_MAX = 128;
             const int Maximum_Identical_Chars = 2;
@@ -123,8 +124,6 @@ namespace WebApplicationRandomOrg.Controllers
 
             }
 
-
-
             char[] password = new char[randomPassword.lengthofPassword];
 
             int characterSetLenght = characterSet.Length;
@@ -133,18 +132,13 @@ namespace WebApplicationRandomOrg.Controllers
 
             for (int characterPosition  = 0; characterPosition < randomPassword.lengthofPassword; characterPosition++)
             {
-                password[characterPosition] = characterSet[pass.Next(characterPosition - 1)];
+                password[characterPosition] = characterSet[pass.Next(characterSetLenght - 1)];
 
-                bool moreThanTwoIdenticalInARow = characterPosition > Maximum_Identical_Chars && password[characterPosition] ==
-                    password[characterPosition - 1] && password[characterPosition - 1] == password[characterPosition - 2];
-                if (moreThanTwoIdenticalInARow)
-                {
-                    characterPosition--;
-                }
+                
 
             }
 
-            string ArrayPassword = String.Join(null, password);
+            string ArrayPassword = string.Join(null, password);
 
             ViewBag.outputPass = ArrayPassword;
 

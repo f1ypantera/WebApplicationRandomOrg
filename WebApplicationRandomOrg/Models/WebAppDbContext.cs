@@ -64,6 +64,8 @@ namespace WebApplicationRandomOrg.Models
                 base.Seed(db);
             }
         }
+
+        public System.Data.Entity.DbSet<WebApplicationRandomOrg.Models.RandomPassword> RandomPasswords { get; set; }
     }
 
    
