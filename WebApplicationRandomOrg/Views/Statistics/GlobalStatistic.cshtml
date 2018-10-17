@@ -6,7 +6,9 @@
         <th>
             @Html.DisplayNameFor(model => model.RequestType.NameType)
         </th>
-      
+        <th>
+            @Html.DisplayNameFor(model => model.UserAccount.UserName)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.OutPutResult)
         </th>
@@ -18,11 +20,13 @@
         <td>
             @Html.DisplayFor(modelItem => item.RequestType.NameType)
         </td>
-        
+        <td>
+            @Html.DisplayFor(modelItem => item.UserAccount.UserName)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.OutPutResult)
         </td>
-      
+     
     </tr>
 }
 

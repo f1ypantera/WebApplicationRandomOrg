@@ -117,11 +117,11 @@ namespace WebApplicationRandomOrg.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             UserAccount userAccount = await db.UserAccounts.FindAsync(id);
-           
-            var result = db.Results.Where(r => r.AccountId == id).Include(r => r.RequestType);
 
+           
+                var result = db.Results.Where(r => r.AccountId == id).Include(r => r.RequestType);
+                return View(await result.ToListAsync());
             
-            return View(await result.ToListAsync());
         }
 
 

@@ -25,17 +25,21 @@ namespace WebApplicationRandomOrg.Controllers
         public async Task<ActionResult> SelectStaticsByUserAsync()
         {
             var currentUserName = HttpContext.User.Identity.Name;
-            var currentUser = await db.UserAccounts.SingleOrDefaultAsync((u) => u.UserName == currentUserName);
-
-
-            var result = db.Results.Where(r => r.AccountId == currentUser.AccountId).Include(r => r.RequestType);
-            
-            var q = await result.ToListAsync();
-
-
-            return View(await result.ToListAsync());
+            var currentUser = await db.UserAccounts.SingleOrDefaultAsync((u) => u.UserName == currentUserName);      
+                var result = db.Results.Where(r => r.AccountId == currentUser.AccountId).Include(r => r.RequestType);
+                return View(await result.ToListAsync());
+           
+           
         }
 
-        
-    }
+        public async Task<ActionResult> GlobalStatistic()
+        {
+            var results = db.Results.Include(r => r.RequestType).Include(r => r.UserAccount);
+            return View(await results.ToListAsync());
+        }
+
+
+
+
+        }
 }

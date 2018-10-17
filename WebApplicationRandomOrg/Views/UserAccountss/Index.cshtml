@@ -76,11 +76,13 @@
                 @Html.ActionLink("Статистика", "SelectStaticsByAdmin", new { id = item.AccountId })
             </td>
         </tr>
+      
     }
 
 </table>
 <div class="form-group">
-    <a class="btn btn-default" href=" @Url.Action("Index","UserAccountss")" role="button">Общая статистика</a>
+ 
+    <a class="btn btn-default" href=" @Url.Action("GlobalStatistic","Statistics")" role="button">Общая статистика</a>
 </div>
 
 

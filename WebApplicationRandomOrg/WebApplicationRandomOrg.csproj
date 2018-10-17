@@ -234,8 +234,9 @@
     <Content Include="Views\GenerateNumber\ListRandomNumbers.cshtml" />
     <Content Include="Views\GenerateNumber\RandomPassword.cshtml" />
     <Content Include="Views\GenerateNumber\ListRandomPassword.cshtml" />
-    <Content Include="Views\Statistics\SelectStaticsByUserAsync.cshtml" />
     <Content Include="Views\UserAccountss\SelectStaticsByAdmin.cshtml" />
+    <Content Include="Views\Statistics\SelectStaticsByUserAsync.cshtml" />
+    <Content Include="Views\Statistics\GlobalStatistic.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
