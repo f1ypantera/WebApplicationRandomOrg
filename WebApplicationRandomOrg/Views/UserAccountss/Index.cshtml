@@ -6,13 +6,7 @@
 
 
 
-<p>
-    <div class="form-group">
-        <a class="btn btn-default" href="@Url.Action("Create","UserAccountss")">Новый пользователь</a>
-    </div>
 
-
-</p>
 <table class="table">
     <tr>
         <th>
@@ -72,7 +66,7 @@
             <td>
                 @Html.ActionLink("Редактировать", "Edit", new { id = item.AccountId }) |
                 @Html.ActionLink("Детали", "Details", new { id = item.AccountId }) |
-                @Html.ActionLink("Удалить", "Delete", new { id = item.AccountId })
+                @Html.ActionLink("Удалить", "Delete", new { id = item.AccountId }) |
                 @Html.ActionLink("Статистика", "SelectStaticsByAdmin", new { id = item.AccountId })
             </td>
         </tr>
@@ -81,7 +75,7 @@
 
 </table>
 <div class="form-group">
- 
+    <a class="btn btn-default" href="@Url.Action("Create","UserAccountss")">Новый пользователь</a>
     <a class="btn btn-default" href=" @Url.Action("GlobalStatistic","Statistics")" role="button">Общая статистика</a>
 </div>
 

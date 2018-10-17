@@ -75,11 +75,8 @@
     </div>
 
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Сохранить" class="btn btn-default" />
-        </div>
-    </div>
-    <div class="form-group">
+        <input type="submit" value="Сохранить" class="btn btn-default" />      
+        <a class="btn btn-default" href=" @Url.Action("Delete","Account")" role="button">Удалить</a>
         <a class="btn btn-default" href="@Url.Action("SelectStaticsByUserAsync","Statistics")" role="button">Статистика</a>
     </div>
 </div>
