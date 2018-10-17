@@ -120,7 +120,22 @@ namespace WebApplicationRandomOrg.Controllers
 
            
                 var result = db.Results.Where(r => r.AccountId == id).Include(r => r.RequestType);
-                return View(await result.ToListAsync());
+
+            int GlobalStatistic = await db.Results.Where(r => r.AccountId == id).CountAsync();
+            int GlobalStatisticByType1 = await db.Results.Where(r => r.AccountId == id).CountAsync(p => p.RequestTypeID == 1);
+            int GlobalStatisticByType2 = await db.Results.Where(r => r.AccountId == id).CountAsync(p => p.RequestTypeID == 2);
+            int GlobalStatisticByType3 = await db.Results.Where(r => r.AccountId == id).CountAsync(p => p.RequestTypeID == 3);
+            int GlobalStatisticByType4 = await db.Results.Where(r => r.AccountId == id).CountAsync(p => p.RequestTypeID == 4);
+
+
+            ViewBag.GlobalStatistic = GlobalStatistic;
+            ViewBag.GlobalStatisticByType1 = GlobalStatisticByType1;
+            ViewBag.GlobalStatisticByType2 = GlobalStatisticByType2;
+            ViewBag.GlobalStatisticByType3 = GlobalStatisticByType3;
+            ViewBag.GlobalStatisticByType4 = GlobalStatisticByType4;
+
+
+            return View(await result.ToListAsync());
             
         }
 

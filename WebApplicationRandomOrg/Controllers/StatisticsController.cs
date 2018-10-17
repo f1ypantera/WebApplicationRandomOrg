@@ -26,8 +26,22 @@ namespace WebApplicationRandomOrg.Controllers
         {
             var currentUserName = HttpContext.User.Identity.Name;
             var currentUser = await db.UserAccounts.SingleOrDefaultAsync((u) => u.UserName == currentUserName);      
-                var result = db.Results.Where(r => r.AccountId == currentUser.AccountId).Include(r => r.RequestType);
-                return View(await result.ToListAsync());
+            var result = db.Results.Where(r => r.AccountId == currentUser.AccountId).Include(r => r.RequestType);
+
+            int GlobalStatistic = await db.Results.Where(r => r.AccountId == currentUser.AccountId).CountAsync();
+            int GlobalStatisticByType1 = await db.Results.Where(r => r.AccountId == currentUser.AccountId).CountAsync(p => p.RequestTypeID == 1);
+            int GlobalStatisticByType2 = await db.Results.Where(r => r.AccountId == currentUser.AccountId).CountAsync(p => p.RequestTypeID == 2);
+            int GlobalStatisticByType3 = await db.Results.Where(r => r.AccountId == currentUser.AccountId).CountAsync(p => p.RequestTypeID == 3);
+            int GlobalStatisticByType4 = await db.Results.Where(r => r.AccountId == currentUser.AccountId).CountAsync(p => p.RequestTypeID == 4);
+
+
+            ViewBag.GlobalStatistic = GlobalStatistic;
+            ViewBag.GlobalStatisticByType1 = GlobalStatisticByType1;
+            ViewBag.GlobalStatisticByType2 = GlobalStatisticByType2;
+            ViewBag.GlobalStatisticByType3 = GlobalStatisticByType3;
+            ViewBag.GlobalStatisticByType4 = GlobalStatisticByType4;
+
+            return View(await result.ToListAsync());
            
            
         }
@@ -51,6 +65,22 @@ namespace WebApplicationRandomOrg.Controllers
 
             return View(await results.ToListAsync());
         }
+
+        //public async Task<ActionResult> GlobalStatisticByUser()
+        //{
+        //    IEnumerable<Result> results;
+
+        //    results = db.Results.Select(p => new Result
+        //    {
+        //        RequestType = p.RequestType,
+        //        OutPutResult = p.OutPutResult
+
+        //    });
+
+           
+
+        //    return View(await results.ToList());
+        //}
 
 
 
