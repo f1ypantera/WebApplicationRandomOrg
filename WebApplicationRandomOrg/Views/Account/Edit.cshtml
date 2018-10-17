@@ -5,7 +5,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>UserAccount</h4>
+     
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.AccountId)
@@ -82,6 +82,7 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
+    <div class="form-group">       
+           <a class="btn btn-default" href="@Url.Action("SelectStaticsByUserAsync","Statistics")" role="button">Статистика</a>   
+    </div>

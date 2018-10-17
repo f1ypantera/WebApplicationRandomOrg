@@ -10,6 +10,8 @@ using System.Data.Entity;
 using System.Web.Security;
 using System.Net;
 
+
+
 namespace WebApplicationRandomOrg.Controllers
 {
     public class AccountController : Controller
@@ -40,6 +42,10 @@ namespace WebApplicationRandomOrg.Controllers
                 {
                     using (WebAppDbContext db = new WebAppDbContext())
                     {
+
+                        
+                        
+
                         db.UserAccounts.Add(new UserAccount { UserName = registration.UserName, Email = registration.Email, Password = registration.Password, PasswordConfirm = registration.PasswordConfirm, Name = registration.Name, Surname = registration.Surname, Year = registration.Year ,RoleID = 2 });
                         await db.SaveChangesAsync();
 

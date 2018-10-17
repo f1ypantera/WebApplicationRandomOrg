@@ -90,6 +90,10 @@ namespace WebApplicationRandomOrg.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", userAccount.RoleID);
+
+
+
+
             return View(userAccount);
         }
 
@@ -105,6 +109,19 @@ namespace WebApplicationRandomOrg.Controllers
                 return HttpNotFound();
             }
             return View(userAccount);
+        }
+        public async Task<ActionResult> SelectStaticsByAdmin(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            UserAccount userAccount = await db.UserAccounts.FindAsync(id);
+           
+            var result = db.Results.Where(r => r.AccountId == id).Include(r => r.RequestType);
+
+            
+            return View(await result.ToListAsync());
         }
 
 

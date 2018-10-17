@@ -22,8 +22,9 @@ namespace WebApplicationRandomOrg.Models
 
         [ForeignKey("RequestType")]
         public int RequestTypeID { get; set; }
+        [Display(Name = "Тип запроса")]
         public RequestType RequestType { get; set; }
-
+        [Display(Name = "Результат")]
         public string OutPutResult { get; set; }
 
 

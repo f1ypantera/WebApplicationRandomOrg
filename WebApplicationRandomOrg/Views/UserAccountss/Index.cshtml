@@ -4,10 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <div class="form-group">
+        <a class="btn btn-default" href="@Url.Action("Create","UserAccountss")">Новый пользователь</a>
+    </div>
+
+
 </p>
 <table class="table">
     <tr>
@@ -38,38 +42,45 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Role.RoleName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PasswordConfirm)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Surname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Year)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AccountId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AccountId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AccountId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role.RoleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PasswordConfirm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.AccountId }) |
+                @Html.ActionLink("Детали", "Details", new { id = item.AccountId }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.AccountId })
+                @Html.ActionLink("Статистика", "SelectStaticsByAdmin", new { id = item.AccountId })
+            </td>
+        </tr>
+    }
 
 </table>
+<div class="form-group">
+    <a class="btn btn-default" href=" @Url.Action("Index","UserAccountss")" role="button">Общая статистика</a>
+</div>
+
+

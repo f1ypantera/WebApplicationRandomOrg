@@ -268,7 +268,7 @@ namespace WebApplicationRandomOrg.Controllers
                 {
                     OutPutResult = ListofRandom.ToString(),
                     UserAccount = currentUser,
-                    RequestType = await db.RequestTypes.SingleOrDefaultAsync((t) => t.RequestTypeID == 2)
+                    RequestType = await db.RequestTypes.SingleOrDefaultAsync((t) => t.RequestTypeID == 4)
                 };
 
 

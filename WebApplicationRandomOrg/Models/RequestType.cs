@@ -12,6 +12,7 @@ namespace WebApplicationRandomOrg.Models
         [Key]
         [System.Web.Mvc.HiddenInput(DisplayValue = false)]
         public int RequestTypeID { get; set;}
+        [Display(Name = "Тип запроса")]
         public string NameType { get; set; }
     }
 }

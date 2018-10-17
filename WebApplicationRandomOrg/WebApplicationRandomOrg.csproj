@@ -165,6 +165,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\GenerateNumberController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\UserAccountssController.cs" />
     <Compile Include="Filters\MyAuthorizationAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -233,6 +234,8 @@
     <Content Include="Views\GenerateNumber\ListRandomNumbers.cshtml" />
     <Content Include="Views\GenerateNumber\RandomPassword.cshtml" />
     <Content Include="Views\GenerateNumber\ListRandomPassword.cshtml" />
+    <Content Include="Views\Statistics\SelectStaticsByUserAsync.cshtml" />
+    <Content Include="Views\UserAccountss\SelectStaticsByAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
