@@ -9,6 +9,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Web.Security;
 using System.Net;
+using System.Data.SqlClient;
 
 namespace WebApplicationRandomOrg.Controllers
 {
@@ -69,24 +70,12 @@ namespace WebApplicationRandomOrg.Controllers
             return View(await results.ToListAsync());
         }
 
-        //public async Task<ActionResult> GlobalStatisticByUser()
-        //{
-        //    IEnumerable<Result> results;
+        public async Task<ActionResult> GlobalStatisticByUserType()
+        {
+            var results = db.Results.Include(r => r.RequestType).Include(r => r.UserAccount);
 
-        //    results = db.Results.Select(p => new Result
-        //    {
-        //        RequestType = p.RequestType,
-        //        OutPutResult = p.OutPutResult
-
-        //    });
-
-           
-
-        //    return View(await results.ToList());
-        //}
-
-
-
-
+            return View(await results.ToListAsync());
         }
+
+    }
 }

@@ -365,7 +365,18 @@ namespace WebApplicationRandomOrg.Controllers
 
             return View();
         }
+        //[HttpGet]
+        //public ActionResult SelectRandomDate()
+        //{
 
+        //    return View();
+        //}
+        //[HttpPost]
+        //public async Task<ActionResult> SelectRandomDate()
+        //{
+
+        //    return View();
+        //}
 
 
     }

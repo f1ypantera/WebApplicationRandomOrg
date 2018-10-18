@@ -238,6 +238,7 @@
     <Content Include="Views\Statistics\SelectStaticsByUserAsync.cshtml" />
     <Content Include="Views\Statistics\GlobalStatistic.cshtml" />
     <Content Include="Views\GenerateNumber\SelectRandomWords.cshtml" />
+    <Content Include="Views\Statistics\GlobalStatisticByUserType.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
