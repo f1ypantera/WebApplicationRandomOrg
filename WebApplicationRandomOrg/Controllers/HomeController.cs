@@ -17,7 +17,7 @@ namespace WebApplicationRandomOrg.Controllers
       
         public ActionResult Index()
         {
-            ViewBag.Time = DateTime.Now;
+          
 
             return View();
         }
