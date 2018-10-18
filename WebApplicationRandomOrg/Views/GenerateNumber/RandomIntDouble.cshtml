@@ -13,13 +13,17 @@
    </script>
 
 </head>
+
 <body onload="checkb();">
 
-    <input onclick="checkb();" checked="checked" id="radbox1" name="GenerateNumber" type="radio" />&nbsp; Int</p>
-    <input onclick="checkb();" id="radbox2" name="GenerateNumber" type="radio" />&nbsp; Double</p>
+    <h4>Случайное число</h4>
+    <hr />
+
+    <input onclick="checkb();" checked="checked" id="radbox1" name="GenerateNumber" type="radio" />&nbsp; Целое число</p>
+    <input onclick="checkb();" id="radbox2" name="GenerateNumber" type="radio" />&nbsp;Число с плавающей точкой</p>
 
     <div id="RandomInt" style="display:none;">
-    
+
 
         @using (Html.BeginForm("RandomInt", "GenerateNumber"))
         {
@@ -31,7 +35,7 @@
                 <p><input type="text" name="max" placeholder="max" /></p>
 
 
-                <p><input type="submit" value="Int" class="btn btn-default" /></p>
+                <p><input type="submit" value="Сгенерировать" class="btn btn-default" /></p>
 
 
 
@@ -43,7 +47,7 @@
 
     </div>
     <div id="RandomDouble" style="display:none;">
-      
+
         @using (Html.BeginForm("RadndomDouble", "GenerateNumber"))
         {
 
@@ -55,7 +59,7 @@
 
 
 
-                <p><input type="submit" value="Double" class="btn btn-default" /></p>
+                <p><input type="submit" value="Сгенерировать" class="btn btn-default" /></p>
 
 
                 <p>@ViewBag.output</p>

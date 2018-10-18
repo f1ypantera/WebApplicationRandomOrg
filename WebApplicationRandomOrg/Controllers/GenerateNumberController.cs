@@ -333,6 +333,26 @@ namespace WebApplicationRandomOrg.Controllers
             return View();
         }
 
+        public ActionResult SelectRandomWords(string text,int numberofwords )
+        {
+            Random randomwords = new Random();            
+            List<string> ListText = new List<string>();
+            List<string> ListNewWord = new List<string>();
+            ListText.AddRange(text.Split(' '));
+
+            for (int i = 0; i < numberofwords; i++)
+            {
+                int randomposition = randomwords.Next(ListText.Count);
+                string RandomWord = ListText[randomposition];
+                ListNewWord.Add(RandomWord);
+            }
+
+            string NewWord = String.Join(",", ListNewWord);
+            ViewBag.output = NewWord;
+
+            return View();
+        }
+
 
 
     }
