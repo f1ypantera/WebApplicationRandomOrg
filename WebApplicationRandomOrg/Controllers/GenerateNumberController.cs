@@ -332,8 +332,8 @@ namespace WebApplicationRandomOrg.Controllers
 
             return View();
         }
-
-        public ActionResult SelectRandomWords(string text,int numberofwords )
+        [HttpPost]
+        public async Task<ActionResult> SelectRandomWords(string text,int numberofwords )
         {
             Random randomwords = new Random();            
             List<string> ListText = new List<string>();
@@ -349,6 +349,19 @@ namespace WebApplicationRandomOrg.Controllers
 
             string NewWord = String.Join(",", ListNewWord);
             ViewBag.output = NewWord;
+
+
+            var currentUserName = HttpContext.User.Identity.Name;
+            var currentUser = await db.UserAccounts.SingleOrDefaultAsync((u) => u.UserName == currentUserName);
+
+            var result = new Result()
+            {
+                OutPutResult = NewWord.ToString(),
+                UserAccount = currentUser,
+                RequestType = await db.RequestTypes.SingleOrDefaultAsync((t) => t.RequestTypeID == 5)
+            };
+            db.Results.Add(result);
+            await db.SaveChangesAsync();
 
             return View();
         }

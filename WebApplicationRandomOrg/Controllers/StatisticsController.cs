@@ -33,13 +33,14 @@ namespace WebApplicationRandomOrg.Controllers
             int GlobalStatisticByType2 = await db.Results.Where(r => r.AccountId == currentUser.AccountId).CountAsync(p => p.RequestTypeID == 2);
             int GlobalStatisticByType3 = await db.Results.Where(r => r.AccountId == currentUser.AccountId).CountAsync(p => p.RequestTypeID == 3);
             int GlobalStatisticByType4 = await db.Results.Where(r => r.AccountId == currentUser.AccountId).CountAsync(p => p.RequestTypeID == 4);
-
+            int GlobalStatisticByType5 = await db.Results.Where(r => r.AccountId == currentUser.AccountId).CountAsync(p => p.RequestTypeID == 5);
 
             ViewBag.GlobalStatistic = GlobalStatistic;
             ViewBag.GlobalStatisticByType1 = GlobalStatisticByType1;
             ViewBag.GlobalStatisticByType2 = GlobalStatisticByType2;
             ViewBag.GlobalStatisticByType3 = GlobalStatisticByType3;
             ViewBag.GlobalStatisticByType4 = GlobalStatisticByType4;
+            ViewBag.GlobalStatisticByType5 = GlobalStatisticByType5;
 
             return View(await result.ToListAsync());
            
@@ -55,6 +56,7 @@ namespace WebApplicationRandomOrg.Controllers
             int GlobalStatisticByType2 = await db.Results.CountAsync(p => p.RequestTypeID == 2);
             int GlobalStatisticByType3 = await db.Results.CountAsync(p => p.RequestTypeID == 3);
             int GlobalStatisticByType4 = await db.Results.CountAsync(p => p.RequestTypeID == 4);
+            int GlobalStatisticByType5 = await db.Results.CountAsync(p => p.RequestTypeID == 5);
 
 
             ViewBag.GlobalStatistic = GlobalStatistic;
@@ -62,6 +64,7 @@ namespace WebApplicationRandomOrg.Controllers
             ViewBag.GlobalStatisticByType2 = GlobalStatisticByType2;
             ViewBag.GlobalStatisticByType3 = GlobalStatisticByType3;
             ViewBag.GlobalStatisticByType4 = GlobalStatisticByType4;
+            ViewBag.GlobalStatisticByType5 = GlobalStatisticByType5;
 
             return View(await results.ToListAsync());
         }
