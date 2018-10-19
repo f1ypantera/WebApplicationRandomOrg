@@ -15,9 +15,10 @@ namespace WebApplicationRandomOrg.Models
 
     {
 
-        public WebAppDbContext() : base("WebAppDbContext")
-        {
-        }
+        public WebAppDbContext() : base("WebAppDbContext") { }
+       
+
+
         public DbSet<UserAccount> UserAccounts { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<RequestType> RequestTypes { get; set; }
@@ -67,9 +68,44 @@ namespace WebApplicationRandomOrg.Models
         }
 
         public System.Data.Entity.DbSet<WebApplicationRandomOrg.Models.RandomPassword> RandomPasswords { get; set; }
-
         public System.Data.Entity.DbSet<WebApplicationRandomOrg.Models.RandomDate> RandomDates { get; set; }
     }
 
-   
+    public class WebAppRepository : IDisposable
+    {
+        private WebAppDbContext db = new WebAppDbContext();
+        public void Save(UserAccount UA)
+        {
+            db.UserAccounts.Add(UA);
+            db.SaveChanges();
+        }
+        public IEnumerable<UserAccount> List()
+        {
+            return db.UserAccounts;
+        }
+
+        public UserAccount Get(int AccountId)
+        {
+            return db.UserAccounts.Find(AccountId);
+        }
+        protected void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (db != null)
+                {
+                    db.Dispose();
+                    db = null;
+                }
+            }
+        }
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+
+
+    }
 }
