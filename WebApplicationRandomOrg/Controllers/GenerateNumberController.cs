@@ -365,18 +365,51 @@ namespace WebApplicationRandomOrg.Controllers
 
             return View();
         }
-        //[HttpGet]
-        //public ActionResult SelectRandomDate()
-        //{
+        [HttpGet]
+        public ActionResult SelectRandomDate()
+        {
 
-        //    return View();
-        //}
-        //[HttpPost]
-        //public async Task<ActionResult> SelectRandomDate()
-        //{
+            return View();
+        }
+        [HttpPost]
+        public async Task<ActionResult> SelectRandomDate(RandomDate randomDate)
+        {
+            Random random = new Random();
 
-        //    return View();
-        //}
+
+         
+           if(ModelState.IsValid && randomDate.minDate <randomDate.maxDate && randomDate.minMonth < randomDate.maxMonth && randomDate.minYear < randomDate.maxYear){
+                int ResultDate = random.Next(randomDate.minDate, randomDate.maxDate);
+                int ResultMonth = random.Next(randomDate.minMonth, randomDate.maxMonth);
+                int ResultYear = random.Next(randomDate.minYear, randomDate.maxYear);
+
+                string ArrayStringDate = string.Format("{0}:{1}:{2}", ResultDate, ResultMonth, ResultYear);
+
+                ViewBag.output = ArrayStringDate;
+
+
+                var currentUserName = HttpContext.User.Identity.Name;
+                var currentUser = await db.UserAccounts.SingleOrDefaultAsync((u) => u.UserName == currentUserName);
+
+                var result = new Result()
+                {
+                    OutPutResult = ArrayStringDate.ToString(),
+                    UserAccount = currentUser,
+                    RequestType = await db.RequestTypes.SingleOrDefaultAsync((t) => t.RequestTypeID == 6)
+                };
+                db.Results.Add(result);
+                await db.SaveChangesAsync();
+            }                                                                           
+            else
+            {
+
+                ViewBag.Error = "Введите правильно данные";
+                
+            }
+         
+
+            return View();
+        }
 
 
     }

@@ -173,6 +173,7 @@
     </Compile>
     <Compile Include="Models\GlobalStatisctic.cs" />
     <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\RandomDate.cs" />
     <Compile Include="Models\RandomPassword.cs" />
     <Compile Include="Models\Registration.cs" />
     <Compile Include="Models\RequestType.cs" />
@@ -239,6 +240,7 @@
     <Content Include="Views\Statistics\GlobalStatistic.cshtml" />
     <Content Include="Views\GenerateNumber\SelectRandomWords.cshtml" />
     <Content Include="Views\Statistics\GlobalStatisticByUserType.cshtml" />
+    <Content Include="Views\GenerateNumber\SelectRandomDate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

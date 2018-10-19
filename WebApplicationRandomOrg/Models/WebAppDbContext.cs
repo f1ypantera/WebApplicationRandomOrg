@@ -67,6 +67,8 @@ namespace WebApplicationRandomOrg.Models
         }
 
         public System.Data.Entity.DbSet<WebApplicationRandomOrg.Models.RandomPassword> RandomPasswords { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplicationRandomOrg.Models.RandomDate> RandomDates { get; set; }
     }
 
    

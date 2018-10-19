@@ -35,6 +35,7 @@ namespace WebApplicationRandomOrg.Controllers
             int GlobalStatisticByType3 = await db.Results.Where(r => r.AccountId == currentUser.AccountId).CountAsync(p => p.RequestTypeID == 3);
             int GlobalStatisticByType4 = await db.Results.Where(r => r.AccountId == currentUser.AccountId).CountAsync(p => p.RequestTypeID == 4);
             int GlobalStatisticByType5 = await db.Results.Where(r => r.AccountId == currentUser.AccountId).CountAsync(p => p.RequestTypeID == 5);
+            int GlobalStatisticByType6 = await db.Results.Where(r => r.AccountId == currentUser.AccountId).CountAsync(p => p.RequestTypeID == 6);
 
             ViewBag.GlobalStatistic = GlobalStatistic;
             ViewBag.GlobalStatisticByType1 = GlobalStatisticByType1;
@@ -42,6 +43,7 @@ namespace WebApplicationRandomOrg.Controllers
             ViewBag.GlobalStatisticByType3 = GlobalStatisticByType3;
             ViewBag.GlobalStatisticByType4 = GlobalStatisticByType4;
             ViewBag.GlobalStatisticByType5 = GlobalStatisticByType5;
+            ViewBag.GlobalStatisticByType6 = GlobalStatisticByType6;
 
             return View(await result.ToListAsync());
            
@@ -58,7 +60,7 @@ namespace WebApplicationRandomOrg.Controllers
             int GlobalStatisticByType3 = await db.Results.CountAsync(p => p.RequestTypeID == 3);
             int GlobalStatisticByType4 = await db.Results.CountAsync(p => p.RequestTypeID == 4);
             int GlobalStatisticByType5 = await db.Results.CountAsync(p => p.RequestTypeID == 5);
-
+            int GlobalStatisticByType6 = await db.Results.CountAsync(p => p.RequestTypeID == 6);
 
             ViewBag.GlobalStatistic = GlobalStatistic;
             ViewBag.GlobalStatisticByType1 = GlobalStatisticByType1;
@@ -66,6 +68,7 @@ namespace WebApplicationRandomOrg.Controllers
             ViewBag.GlobalStatisticByType3 = GlobalStatisticByType3;
             ViewBag.GlobalStatisticByType4 = GlobalStatisticByType4;
             ViewBag.GlobalStatisticByType5 = GlobalStatisticByType5;
+            ViewBag.GlobalStatisticByType6 = GlobalStatisticByType6;
 
             return View(await results.ToListAsync());
         }

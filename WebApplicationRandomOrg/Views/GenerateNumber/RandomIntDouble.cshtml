@@ -20,7 +20,7 @@
     <hr />
 
     <input onclick="checkb();" checked="checked" id="radbox1" name="GenerateNumber" type="radio" />&nbsp; Целое число</p>
-    <input onclick="checkb();" id="radbox2" name="GenerateNumber" type="radio" />&nbsp;Число с плавающей точкой</p>
+    <input onclick="checkb();" id="radbox2" name="GenerateNumber" type="radio" />&nbsp; Число с плавающей точкой</p>
 
     <div id="RandomInt" style="display:none;">
 
@@ -31,11 +31,11 @@
             <div class="form-group">
 
 
-                <p><input type="text" name="min" placeholder="min" /></p>
-                <p><input type="text" name="max" placeholder="max" /></p>
+                <p><input class="form-control control-label"  type="text" name="min" placeholder="min" /></p>
+                <p><input class="form-control control-label" type="text" name="max" placeholder="max" /></p>
 
 
-                <p><input type="submit" value="Сгенерировать" class="btn btn-default" /></p>
+                <p><input class="form-control control-label"  type="submit" value="Сгенерировать" class="btn btn-default" /></p>
 
 
 
@@ -54,12 +54,12 @@
             <div class="form-group">
 
 
-                <p><input type="text" name="min" placeholder="min" /></p>
-                <p><input type="text" name="max" placeholder="max" /></p>
+                <p><input class="form-control control-label" type="text" name="min" placeholder="min" /></p>
+                <p><input class="form-control control-label"  type="text" name="max" placeholder="max" /></p>
 
 
 
-                <p><input type="submit" value="Сгенерировать" class="btn btn-default" /></p>
+                <p><input class="form-control control-label btn btn-default"  type="submit" value="Сгенерировать" /></p>
 
 
                 <p>@ViewBag.output</p>
