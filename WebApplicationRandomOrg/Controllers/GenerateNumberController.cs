@@ -15,8 +15,9 @@ namespace WebApplicationRandomOrg.Controllers
     public class GenerateNumberController : Controller
     {
         WebAppDbContext db = new WebAppDbContext();
-        
-      
+
+
+     
 
         public ActionResult Index()
         {
