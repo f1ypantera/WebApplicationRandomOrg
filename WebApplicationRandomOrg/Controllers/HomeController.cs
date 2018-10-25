@@ -10,19 +10,11 @@ using Ninject;
 
 namespace WebApplicationRandomOrg.Controllers
 {
-
+    
 
     public class HomeController : Controller
     {
-
-
-      
-        
-        public HomeController()
-        {
-           
-        }
-
+        WebAppDbContext db = new WebAppDbContext();
 
         public ActionResult Index()
         {
@@ -30,9 +22,21 @@ namespace WebApplicationRandomOrg.Controllers
 
             return View();
         }
+        [HttpGet]
+        public ActionResult Comments()
+        {
+            return View();
+        }
+        [HttpPost]
 
-       
-      
+        public ActionResult Comments()
+        {
+            return View();
+        }
+
+
+
+
 
 
 
