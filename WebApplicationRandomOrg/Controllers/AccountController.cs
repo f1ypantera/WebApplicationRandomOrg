@@ -130,7 +130,7 @@ namespace WebApplicationRandomOrg.Controllers
                 
                 db.Entry(userAccount).State = EntityState.Modified;
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Edit","Account");
             }
             ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", userAccount.RoleID);
 

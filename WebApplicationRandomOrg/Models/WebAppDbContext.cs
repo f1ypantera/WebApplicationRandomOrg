@@ -15,7 +15,7 @@ namespace WebApplicationRandomOrg.Models
 
     {
 
-        public WebAppDbContext() : base("WebAppDbContext") { }
+        public WebAppDbContext() : base("DefaultConnection") { }
        
 
 
