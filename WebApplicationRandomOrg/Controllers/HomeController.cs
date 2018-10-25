@@ -18,19 +18,19 @@ namespace WebApplicationRandomOrg.Controllers
 
         public ActionResult Index()
         {
-          
 
             return View();
         }
         [HttpGet]
-        public ActionResult Comments()
+        public ActionResult CommentsMethod()
         {
             return View();
         }
         [HttpPost]
 
-        public ActionResult Comments()
+        public ActionResult CommentsMethod(Coments coments)
         {
+
             return View();
         }
 
