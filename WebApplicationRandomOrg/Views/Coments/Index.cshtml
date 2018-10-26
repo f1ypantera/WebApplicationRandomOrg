@@ -6,40 +6,59 @@
 }
 
 
-<h3>Отзывы</h3>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Teplate</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="~/Content/style.css" rel="stylesheet" />
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Subject)
-        </th>
-        <th></th>
-    </tr>
+</head>
+<body>
 
-    @foreach (var item in Model)
-    {
+
+    <h3>Отзывы</h3>
+
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Subject, new { @class = "control-label col-md-6" })) 
-            </td>
-            <td>
-                @Html.ActionLink("Детали", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subject)
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
-<a class="btn btn-default" href=" @Url.Action("Index","UserAccountss")" role="button">Назад</a>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    <div class="text">
+                        
+                        @Html.DisplayFor(modelItem => item.Subject)
+                    </div>
+                  
+                </td>
+                <td>
+                    @Html.ActionLink("Детали", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <a class="btn btn-default" href=" @Url.Action("Index","UserAccountss")" role="button">Назад</a>
+
+    </body>
+</html>
