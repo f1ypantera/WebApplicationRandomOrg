@@ -175,6 +175,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ComentsController.cs" />
     <Compile Include="Controllers\GenerateNumberController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
@@ -183,6 +184,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810250953480_InitialCreate.cs" />
+    <Compile Include="Migrations\201810250953480_InitialCreate.Designer.cs">
+      <DependentUpon>201810250953480_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810260811387_MigrateDB1.cs" />
+    <Compile Include="Migrations\201810260811387_MigrateDB1.Designer.cs">
+      <DependentUpon>201810260811387_MigrateDB1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Coments.cs" />
     <Compile Include="Models\GlobalStatisctic.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\RandomDate.cs" />
@@ -240,7 +251,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Registration.cshtml" />
-    <Content Include="Views\GenerateNumber\Index.cshtml" />
     <Content Include="Views\Account\Delete.cshtml" />
     <Content Include="Views\UserAccountss\Create.cshtml" />
     <Content Include="Views\UserAccountss\Delete.cshtml" />
@@ -258,6 +268,10 @@
     <Content Include="Views\GenerateNumber\SelectRandomWords.cshtml" />
     <Content Include="Views\Statistics\GlobalStatisticByUserType.cshtml" />
     <Content Include="Views\GenerateNumber\SelectRandomDate.cshtml" />
+    <Content Include="Views\UserAccountss\UsersComments.cshtml" />
+    <Content Include="Views\Coments\Delete.cshtml" />
+    <Content Include="Views\Coments\Details.cshtml" />
+    <Content Include="Views\Coments\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -274,6 +288,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201810250953480_InitialCreate.resx">
+      <DependentUpon>201810250953480_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810260811387_MigrateDB1.resx">
+      <DependentUpon>201810260811387_MigrateDB1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

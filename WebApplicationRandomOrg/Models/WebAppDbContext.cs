@@ -11,12 +11,12 @@ using System.Web.Mvc.Filters;
 
 namespace WebApplicationRandomOrg.Models
 {
-    public class WebAppDbContext:DbContext
+    public class WebAppDbContext : DbContext
 
     {
 
         public WebAppDbContext() : base("DefaultConnection") { }
-       
+
 
 
         public DbSet<UserAccount> UserAccounts { get; set; }
@@ -25,6 +25,7 @@ namespace WebApplicationRandomOrg.Models
         public DbSet<Result> Results { get; set; }
         public DbSet<StatisticsByUser> StatisticsByUsers { get; set; }
         public DbSet<GlobalStatisctic> GlobalStatisctics { get; set; }
+        public DbSet<Coments> Comentss { get; set; }
  
 
 

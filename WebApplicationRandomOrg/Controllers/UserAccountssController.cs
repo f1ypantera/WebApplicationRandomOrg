@@ -25,7 +25,7 @@ namespace WebApplicationRandomOrg.Controllers
             return View(await userAccounts.ToListAsync());
         }
 
-      
+     
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)

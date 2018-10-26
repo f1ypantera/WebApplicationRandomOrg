@@ -7,11 +7,11 @@ using WebApplicationRandomOrg.Models;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Ninject;
+using System.Threading.Tasks;
 
 namespace WebApplicationRandomOrg.Controllers
 {
     
-
     public class HomeController : Controller
     {
         WebAppDbContext db = new WebAppDbContext();
@@ -27,18 +27,24 @@ namespace WebApplicationRandomOrg.Controllers
             return View();
         }
         [HttpPost]
-
-        public ActionResult CommentsMethod(Coments coments)
+        public async Task<ActionResult> CommentsMethod(Coments coments)
         {
-
-            return View();
+            if (ModelState.IsValid)
+            {                
+                using(WebAppDbContext db = new WebAppDbContext())
+                {
+                    db.Comentss.Add(new Coments { FirstName = coments.FirstName, LastName = coments.LastName, Subject = coments.Subject });
+                 
+                    await db.SaveChangesAsync();
+                }
+              
+            }
+            else
+            {
+                ModelState.AddModelError("", "Не правильно введен фидбек");
+            }
+            ViewBag.message = "Спасибо за отзыв";
+            return View("Index");
         }
-
-
-
-
-
-
-
     }
 }

@@ -19,24 +19,29 @@
         RANDOM.ORG offers true random numbers to anyone on the Internet. The randomness comes from atmospheric noise, which for many purposes is better than the pseudo-random number algorithms typically used in computer programs. People use RANDOM.ORG for holding drawings, lotteries and sweepstakes, to drive online games, for scientific applications and for art and music.
     </p>
 
+    @using (Html.BeginForm("CommentsMethod", "Home"))
+    {
 
-    <div class="border">
-        <div class="form-group">
-        <h3>Conctact me</h3>
-        <p><input class="form-control control-label" type="text" name="FirstName" placeholder="Your Name..." /></p>
-        <p><input class="form-control control-label" type="text" name="LastName" placeholder="Your Surname..." /></p>
+        <div class="border">
+            <div class="form-group">
+                <h3>Conctact me</h3>
+                <p><input class="form-control control-label" type="text" name="FirstName" placeholder="Your Name..." /></p>
+                <p><input class="form-control control-label" type="text" name="LastName" placeholder="Your Surname..." /></p>
 
-        <p><textarea class="form-control control-label" name="Subject" placeholder="Write message.." style="width:300px;height:100px"></textarea></p>
+                <p><textarea class="form-control control-label" name="Subject" placeholder="Write message.." style="width:300px;height:100px"></textarea></p>
 
-        <p><input class="form-control control-label" type="submit" value="Отправить"></p>
+                <p><input class="form-control control-label" type="submit" value="Отправить"></p>
 
-    </div>
-    </div>
- 
+                <p>@ViewBag.message</p>
+
+            </div>
+        </div>
+    }
 
 
 
 
 
-</body>
+
+    </body>
 </html>
