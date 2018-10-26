@@ -21,6 +21,11 @@ namespace WebApplicationRandomOrg.Controllers
 
             return View();
         }
+        public ActionResult About()
+        {
+
+            return View();
+        }
         [HttpGet]
         public ActionResult CommentsMethod()
         {

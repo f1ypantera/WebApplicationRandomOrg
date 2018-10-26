@@ -272,6 +272,7 @@
     <Content Include="Views\Coments\Delete.cshtml" />
     <Content Include="Views\Coments\Details.cshtml" />
     <Content Include="Views\Coments\Index.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

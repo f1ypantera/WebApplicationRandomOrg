@@ -11,7 +11,7 @@ using System.Data.Entity;
 
 namespace WebApplicationRandomOrg.Controllers
 {
-    [Authorize]
+
     public class GenerateNumberController : Controller
     {
         WebAppDbContext db = new WebAppDbContext();
@@ -40,18 +40,23 @@ namespace WebApplicationRandomOrg.Controllers
             ViewBag.output = res;
             
         
+           
            var currentUserName = HttpContext.User.Identity.Name;
            var currentUser = await db.UserAccounts.SingleOrDefaultAsync((u) => u.UserName == currentUserName);
 
-            var result = new Result()
-            {
-                OutPutResult = res.ToString(),
-                UserAccount = currentUser,
-                RequestType = await db.RequestTypes.SingleOrDefaultAsync((t) => t.RequestTypeID == 1)
-            };
 
-            db.Results.Add(result);
-            await db.SaveChangesAsync();
+            if (currentUser != null)
+            {
+                var result = new Result()
+                {
+                    OutPutResult = res.ToString(),
+                    UserAccount = currentUser,
+                    RequestType = await db.RequestTypes.SingleOrDefaultAsync((t) => t.RequestTypeID == 1)
+                };
+
+                db.Results.Add(result);
+                await db.SaveChangesAsync();
+            }
             
 
             return View("RandomIntDouble");
@@ -67,16 +72,19 @@ namespace WebApplicationRandomOrg.Controllers
 
             var currentUserName = HttpContext.User.Identity.Name;
             var currentUser = await db.UserAccounts.SingleOrDefaultAsync((u) => u.UserName == currentUserName);
-
-            var result = new Result()
+            if (currentUser != null)
             {
-                OutPutResult = res.ToString(),
-                UserAccount = currentUser,
-                RequestType = await db.RequestTypes.SingleOrDefaultAsync((t) => t.RequestTypeID == 1)
-            };
+                var result = new Result()
+                {
+                    OutPutResult = res.ToString(),
+                    UserAccount = currentUser,
+                    RequestType = await db.RequestTypes.SingleOrDefaultAsync((t) => t.RequestTypeID == 1)
+                };
 
-            db.Results.Add(result);
-            await db.SaveChangesAsync();
+
+                db.Results.Add(result);
+                await db.SaveChangesAsync();
+            }
             return View("RandomIntDouble");
         }
 
@@ -102,9 +110,9 @@ namespace WebApplicationRandomOrg.Controllers
             const int Password_LENGTH_MIN = 7;
             const int Password_LENGTH_MAX = 128;
             const int Maximum_Identical_Chars = 2;
-            
 
-           
+
+
 
             if (ModelState.IsValid && randomPassword.lengthofPassword > Password_LENGTH_MIN && randomPassword.lengthofPassword < Password_LENGTH_MAX)
             {
@@ -158,7 +166,7 @@ namespace WebApplicationRandomOrg.Controllers
 
                 var currentUserName = HttpContext.User.Identity.Name;
                 var currentUser = await db.UserAccounts.SingleOrDefaultAsync((u) => u.UserName == currentUserName);
-
+                if (currentUser != null) { 
                 var result = new Result()
                 {
                     OutPutResult = ArrayPassword.ToString(),
@@ -167,8 +175,10 @@ namespace WebApplicationRandomOrg.Controllers
                 };
 
 
+
                 db.Results.Add(result);
                 await db.SaveChangesAsync();
+            }
 
             }
             else
@@ -264,17 +274,19 @@ namespace WebApplicationRandomOrg.Controllers
 
                 var currentUserName = HttpContext.User.Identity.Name;
                 var currentUser = await db.UserAccounts.SingleOrDefaultAsync((u) => u.UserName == currentUserName);
-
-                var result = new Result()
+                if (currentUser != null)
                 {
-                    OutPutResult = ListofRandom.ToString(),
-                    UserAccount = currentUser,
-                    RequestType = await db.RequestTypes.SingleOrDefaultAsync((t) => t.RequestTypeID == 4)
-                };
+                    var result = new Result()
+                    {
+                        OutPutResult = ListofRandom.ToString(),
+                        UserAccount = currentUser,
+                        RequestType = await db.RequestTypes.SingleOrDefaultAsync((t) => t.RequestTypeID == 4)
+                    };
 
 
-                db.Results.Add(result);
-                await db.SaveChangesAsync();
+                    db.Results.Add(result);
+                    await db.SaveChangesAsync();
+                }
 
             }
             else
@@ -312,17 +324,20 @@ namespace WebApplicationRandomOrg.Controllers
 
             var currentUserName = HttpContext.User.Identity.Name;
             var currentUser = await db.UserAccounts.SingleOrDefaultAsync((u) => u.UserName == currentUserName);
-
-            var result = new Result()
+            if (currentUser != null)
             {
-                OutPutResult = ArrayString.ToString(),
-                UserAccount = currentUser,
-                RequestType = await db.RequestTypes.SingleOrDefaultAsync((t) => t.RequestTypeID == 3)
-            };
+                var result = new Result()
+                {
+                    OutPutResult = ArrayString.ToString(),
+                    UserAccount = currentUser,
+                    RequestType = await db.RequestTypes.SingleOrDefaultAsync((t) => t.RequestTypeID == 3)
+                };
 
-            db.Results.Add(result);
-            await db.SaveChangesAsync();
+                db.Results.Add(result);
+                await db.SaveChangesAsync();
+            }
 
+                
 
             return View();
         }
@@ -354,16 +369,17 @@ namespace WebApplicationRandomOrg.Controllers
 
             var currentUserName = HttpContext.User.Identity.Name;
             var currentUser = await db.UserAccounts.SingleOrDefaultAsync((u) => u.UserName == currentUserName);
-
-            var result = new Result()
+            if (currentUser != null)
             {
-                OutPutResult = NewWord.ToString(),
-                UserAccount = currentUser,
-                RequestType = await db.RequestTypes.SingleOrDefaultAsync((t) => t.RequestTypeID == 5)
-            };
-            db.Results.Add(result);
-            await db.SaveChangesAsync();
-
+                var result = new Result()
+                {
+                    OutPutResult = NewWord.ToString(),
+                    UserAccount = currentUser,
+                    RequestType = await db.RequestTypes.SingleOrDefaultAsync((t) => t.RequestTypeID == 5)
+                };
+                db.Results.Add(result);
+                await db.SaveChangesAsync();
+            }
             return View();
         }
         [HttpGet]
@@ -391,15 +407,17 @@ namespace WebApplicationRandomOrg.Controllers
 
                 var currentUserName = HttpContext.User.Identity.Name;
                 var currentUser = await db.UserAccounts.SingleOrDefaultAsync((u) => u.UserName == currentUserName);
-
-                var result = new Result()
+                if (currentUser != null)
                 {
-                    OutPutResult = ArrayStringDate.ToString(),
-                    UserAccount = currentUser,
-                    RequestType = await db.RequestTypes.SingleOrDefaultAsync((t) => t.RequestTypeID == 6)
-                };
-                db.Results.Add(result);
-                await db.SaveChangesAsync();
+                    var result = new Result()
+                    {
+                        OutPutResult = ArrayStringDate.ToString(),
+                        UserAccount = currentUser,
+                        RequestType = await db.RequestTypes.SingleOrDefaultAsync((t) => t.RequestTypeID == 6)
+                    };
+                    db.Results.Add(result);
+                    await db.SaveChangesAsync();
+                }
             }                                                                           
             else
             {
