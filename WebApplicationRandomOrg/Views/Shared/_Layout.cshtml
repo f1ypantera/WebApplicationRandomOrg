@@ -9,6 +9,7 @@
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/style.css" rel="stylesheet" />
 
+ 
 
 </head>
 
@@ -30,15 +31,12 @@
                     <li><a href="@Url.Action("Index","Home")">Home</a></li>
                     <li><a href="@Url.Action("About","Home")">About us</a></li>
 
-
-
-
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <a class="dropdown-toggle" data-toggle="dropdown" >
                             Generate Number
                             <span class="caret"></span>
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu" >
                             <li><a href="@Url.Action("RandomIntDouble","GenerateNumber")">Random Number(int,double)</a></li>
                             <li><a href="@Url.Action("RandomPassword","GenerateNumber")">Random Password</a></li>
                             <li><a href="@Url.Action("ListRandomNumbers","GenerateNumber")">List of Random Numbers</a></li>
@@ -76,7 +74,9 @@
 
 
                 </ul>
+
             </div>
+
         </div>
     </nav>
    
